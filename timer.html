@@ -336,14 +336,14 @@
           return;
         }
 
-        try {
-          if (/\d+(\.\d+)?/.exec(timestamp)) {
-            timestamp = parseFloat(timestamp) * 1000;
-          } else {
-            timestamp = Date.parse(timestamp);
+        if (/\d+(\.\d+)?/.exec(timestamp)) {
+          timestamp = parseFloat(timestamp) * 1000;
+        } else {
+          timestamp = Date.parse(timestamp);
+          if (isNaN(timestamp)) {
+            setError('Invalid timestamp');
+            return;
           }
-        } catch (error) {
-          setError('Invalid timestamp', error);
         }
 
         // Insert custom CSS, if any
