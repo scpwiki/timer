@@ -25,34 +25,36 @@
       Timers are "persistent" in that they record the target timestamp in its URL, so an
       <tt>[[iframe]]</tt> in a forum post will continually target the same time even if
       the page is reloaded.
-
-      <strong>Query Parameters</strong>
-
-      <ul>
-        <li>
-          <tt>lang</tt> &mdash; <strong>Required.</strong> The language to be used.
-          For instance, use <tt>en</tt> for English.
-        </li>
-
-        <li>
-          <tt>time</tt> &mdash; <strong>Required.</strong> The target timestamp for the timer.
-          Can either be a UNIX timestamp in seconds, or an ISO date string (whatever Javascript's
-          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse"><tt>Date.parse()</tt></a> can handle).
-        </li>
-
-        <li>
-          <tt>progress</tt> &mdash; Custom message for while the timer is ticking down.
-        </li>
-
-        <li>
-          <tt>finished</tt> &mdash; Custom message for after the timer has expired.
-        </li>
-
-        <li>
-          <tt>style</tt> &mdash; Custom CSS to inject into the document to style the timer.
-        </li>
-      </ul>
     </p>
+
+    <p>
+      <strong>Query Parameters</strong>
+    </p>
+
+    <ul>
+      <li>
+        <tt>lang</tt> &mdash; <strong>Required.</strong> The language to be used.
+        For instance, use <tt>en</tt> for English.
+      </li>
+
+      <li>
+        <tt>time</tt> &mdash; <strong>Required.</strong> The target timestamp for the timer.
+        Can either be a UNIX timestamp in seconds, or an ISO date string (whatever Javascript's
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/parse"><tt>Date.parse()</tt></a> can handle).
+      </li>
+
+      <li>
+        <tt>progress</tt> &mdash; Custom message for while the timer is ticking down.
+      </li>
+
+      <li>
+        <tt>finished</tt> &mdash; Custom message for after the timer has expired.
+      </li>
+
+      <li>
+        <tt>style</tt> &mdash; Custom CSS to inject into the document to style the timer.
+      </li>
+    </ul>
 
     <h2 id="timer-selector"><a href="/timer-selector.html">Timer Selector</a></h2>
 
