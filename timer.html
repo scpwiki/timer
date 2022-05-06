@@ -180,11 +180,11 @@
 
         // Update routine, to invoke every second
         var timerFields = [
-          ['months', MONTHS_ENUM],
-          ['days', DAYS_ENUM],
-          ['hours', HOURS_ENUM],
-          ['minutes', MINUTES_ENUM],
-          ['seconds', SECONDS_ENUM],
+          ['months', MONTHS_ENUM, 1],
+          ['days', DAYS_ENUM, 1],
+          ['hours', HOURS_ENUM, 2],
+          ['minutes', MINUTES_ENUM, 2],
+          ['seconds', SECONDS_ENUM, 2],
         ];
 
         function updateTimer() {
@@ -205,11 +205,12 @@
           for (var i = 0; i < timerFields.length; i++) {
             var field = timerFields[i][0];
             var enum = timerFields[i][1];
+            var padWidth = timerFields[i][2];
 
             // If the value is to be shown, then display it.
             // Ensure digits are padded to the appropriate width.
             var value = remaining.highest >= enum
-              ? String(remaining[field]).padStart(2, '0')
+              ? String(remaining[field]).padStart(padWidth, '0')
               : null;
 
             setTimerField(language, field, value);
