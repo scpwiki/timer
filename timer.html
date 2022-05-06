@@ -49,6 +49,10 @@
         color: #b01;
       }
 
+      .error-secondary {
+        font-size: 0.6em;
+      }
+
       .progress {
         color: black;
       }
@@ -66,8 +70,6 @@
       <h1 id="title"></h1>
 
       <div id="clock">
-        <span id="error-sub" class="error hidden"></span>
-
         <div id="years-div" class="unit">
           <span id="years" class="unit-value"></span>
           <span id="years-label" class="unit-label"></span>
@@ -104,13 +106,17 @@
       // Errors are only in English unfortunately
       function setError(primary, secondary = null) {
         var titleElement = document.getElementById('title');
-        titleElement.classList = ['error'];
+        titleElement.classList.add('error');
         titleElement.innerText = primary;
 
+        var clockElement = document.getElementById('clock');
+        clockElement.classList.add('hidden');
+
         if (secondary) {
-          var errorElement = document.getElementById('error-sub');
-          errorElement.classList.remove('hidden');
-          errorElement.innerText = secondary;
+          var messageElement = document.createElement('div');
+          messageElement.classList.add('error-secondary');
+          messageElement.innerText = secondary;
+          titleElement.appendChild(messageElement);
         }
       }
 
