@@ -114,50 +114,113 @@
       var MONTHS_ENUM = 4;
       var YEARS_ENUM = 5;
 
-      function timeRemaining(endTime) {
-        var elapsed = endTime - new Date();
-        var finished = true;
-        var highest = null;
+      // Trim off sub-day time information
+      function trimDate(date) {
+        return new Date(
+          date.getFullYear(),
+          date.getMonth(),
+          date.getDate(),
+        );
+      }
 
-        if (elapsed < 0) {
-          elapsed = -elapsed;
-          finished = false;
+      function getDaysInFebruary(startYear) {
+        return (startYear % 4 === 0 && startYear % 100 !== 0)
+          || startYear % 400 === 0 ? 29 : 28;
+      }
+
+      function elapsedData(targetTime) {
+        var now = new Date();
+        var elapsed = now - targetTime;
+
+        if (elapsed >= 0) {
+          // Date is in the past
+          return {
+            elapsed: elapsed,
+            finished: true,
+            startTime: targetTime,
+            endTime: now,
+          };
+        } else {
+          // Date is in the future
+          return {
+            elapsed: -elapsed,
+            finished: false,
+            startTime: now,
+            endTime: targetTime,
+          };
+        }
+      }
+
+      // Based on https://stackoverflow.com/a/49201872
+      // Calculate differences greater than a day.
+      function dateDiff(startTime, endTime) {
+        var startDate = trimDate(startDate);
+        var endDate = trimDate(endDate);
+
+        var february = getDaysInFebruary(startDate.getFullYear());
+        var daysInMonth = [31, february, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+        var yearDiff = endDate.getFullYear() - startYear;
+        var monthDiff = endDate.getMonth() - startDate.getMonth();
+        if (monthDiff < 0) {
+          yearDiff--;
+          monthDiff += 12;
         }
 
-        // TODO years
-        var years = 0;
+        var dayDiff = endDate.getDate() - startDate.getDate();
+        if (dayDiff < 0) {
+          if (monthDiff > 0) {
+            monthDiff--;
+          } else {
+            yearDiff--;
+            monthDiff = 11;
+          }
 
-        // BUG: Doesn't properly account for differing durations
-        //      of months. This is definitely possible to do with
-        //      a more complex implementation, but since most timer
-        //      uses are < 1 week, this shouldn't matter much.
-        var months = Math.floor(elapsed / MONTHS_MS);
-        elapsed = Math.floor(elapsed % MONTHS_MS);
-        if (months > 0 && highest === null) {
-          highest = MONTHS_ENUM;
+          dayDiff += daysInMonth[startDate.getMonth()];
         }
 
-        var days = Math.floor(elapsed / DAYS_MS);
-        elapsed = Math.floor(elapsed % DAYS_MS);
-        if (days > 0 && highest === null) {
-          highest = DAYS_ENUM;
-        }
+        return {
+          years: yearDiff,
+          months: monthDiff,
+          days: dayDiff,
+        };
+      }
+
+      // Calculate difference in time, in all units
+      function timeRemaining(targetTime) {
+        var data = elapsedData(targetTime);
+
+        // Differences > 1 day
+        var dateDiffs = dateDiff(data.startTime, data.endTime);
+        var years = dateDiffs.years;
+        var months = dateDiffs.months;
+        var days = dateDiffs.days;
+
+        // Differences < 1 day
+        var elapsed = Math.floor(data.elapsed % DAYS_MS);
 
         var hours = Math.floor(elapsed / HOURS_MS);
         elapsed = Math.floor(elapsed % HOURS_MS);
-        if (hours > 0 && highest === null) {
-          highest = HOURS_ENUM;
-        }
 
         var minutes = Math.floor(elapsed / MINUTES_MS);
         elapsed = Math.floor(elapsed % MINUTES_MS);
-        if (minutes > 0 && highest === null) {
-          highest = MINUTES_ENUM;
-        }
 
         var seconds = Math.floor(elapsed / SECONDS_MS);
         elapsed = Math.floor(elapsed % MINUTES_MS);
-        if (highest === null) {
+
+        // Get highest unit present
+        var highest;
+        if (years > 0) {
+          highest = YEARS_ENUM;
+        } else if (months > 0) {
+          highest = MONTHS_ENUM;
+        } else if (days > 0) {
+          highest = DAYS_ENUM;
+        } else if (hours > 0) {
+          highest = HOURS_ENUM;
+        } else if (minutes > 0) {
+          highest = MINUTES_ENUM;
+        } else {
           highest = SECONDS_ENUM;
         }
 
@@ -168,7 +231,7 @@
           hours: hours,
           minutes: minutes,
           seconds: seconds,
-          finished: finished,
+          finished: data.finished,
           highest: highest,
         };
       }
@@ -190,7 +253,7 @@
       }
 
       function createTimer(language, timestamp, progressMessage, finishedMessage) {
-        var endTime = new Date(timestamp);
+        var targetTime = new Date(timestamp);
         progressMessage = progressMessage || getMessage(language, 'timer-progress');
         finishedMessage = finishedMessage || getMessage(language, 'timer-finished');
 
@@ -205,7 +268,7 @@
         ];
 
         function updateTimer() {
-          var remaining = timeRemaining(endTime);
+          var remaining = timeRemaining(targetTime);
 
           // Set title message
           var titleElement = document.getElementById('timer-title');
@@ -236,7 +299,7 @@
 
         // Set title.
         // Since this is meant to be used as an iframe, setting it every tick is pointless.
-        document.title = getMessage(language, 'timer-description') + ' ' + endTime;
+        document.title = getMessage(language, 'timer-description') + ' ' + targetTime;
 
         // Configure timer to run regularly.
         updateTimer();
