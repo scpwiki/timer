@@ -44,13 +44,10 @@
     <noscript>This application requires Javascript to function.</noscript>
 
     <div id="timer">
-      <h1>
-        <span id="title"></span>
-        <span id="error" class="error"></span>
-      </h1>
+      <h1 id="title"></h1>
 
       <div id="clock">
-        <span id="error-sub" class="error"></span>
+        <span id="error-sub" class="error hidden"></span>
 
         <div id="years-div" class="unit">
           <span id="years" class="unit-value"></span>
@@ -87,10 +84,14 @@
     <script>
       // Errors are only in English unfortunately
       function setError(primary, secondary = null) {
-        document.getElementById('error').innerText = primary;
+        var titleElement = document.getElementById('title');
+        titleElement.classList = ['error'];
+        titleElement.innerText = primary;
 
         if (secondary) {
-          document.getElementById('error-sub').innerText = secondary;
+          var errorElement = document.getElementById('error-sub');
+          errorElement.classList.remove('hidden');
+          errorElement.innerText = secondary;
         }
       }
 
