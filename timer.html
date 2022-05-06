@@ -31,6 +31,11 @@
         <span id="timer-error-secondary" class="error"></span>
 
         <div>
+          <span id="timer-years-value"></span>
+          <span id="timer-years-label"></span>
+        </div>
+
+        <div>
           <span id="timer-months-value"></span>
           <span id="timer-months-label"></span>
         </div>
@@ -73,6 +78,7 @@
             'timer-description': 'Timer expiring at',
             'timer-progress': 'This timer will expire in',
             'timer-finished': 'This timer has been expired since',
+            'years': 'Years',
             'months': 'Months',
             'days': 'Days',
             'hours': 'Hours',
@@ -100,13 +106,13 @@
       var MINUTES_MS = SECONDS_MS * 60;
       var HOURS_MS = MINUTES_MS * 60;
       var DAYS_MS = HOURS_MS * 24;
-      var MONTHS_MS = DAYS_MS * 30;
 
       var SECONDS_ENUM = 0;
       var MINUTES_ENUM = 1;
       var HOURS_ENUM = 2;
       var DAYS_ENUM = 3;
       var MONTHS_ENUM = 4;
+      var YEARS_ENUM = 5;
 
       function timeRemaining(endTime) {
         var elapsed = endTime - new Date();
@@ -117,6 +123,9 @@
           elapsed = -elapsed;
           finished = false;
         }
+
+        // TODO years
+        var years = 0;
 
         // BUG: Doesn't properly account for differing durations
         //      of months. This is definitely possible to do with
@@ -153,6 +162,7 @@
         }
 
         return {
+          years: years,
           months: months,
           days: days,
           hours: hours,
@@ -183,6 +193,7 @@
 
         // Update routine, to invoke every second
         var timerFields = [
+          ['years', YEARS_ENUM, 1],
           ['months', MONTHS_ENUM, 1],
           ['days', DAYS_ENUM, 1],
           ['hours', HOURS_ENUM, 2],
