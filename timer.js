@@ -153,7 +153,9 @@ function createTimer(language, timestamp, progressMessage, finishedMessage) {
     }
   }
 
-  // TODO
+  // Configure timer to run regularly.
+  updateTimer();
+  setInterval(updateTimer, 1000);
 }
 
 function setup() {
