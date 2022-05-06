@@ -9,25 +9,31 @@ function setError(primary, secondary = null) {
 }
 
 function getMessage(language, messageKey) {
-  var translations;
-  switch (messageKey) {
-    case 'timer-progress':
-      return 'This timer will expire in';
-    case 'timer-finished':
-      return 'This timer has been expired since';
-    case 'months':
-      return 'Months';
-    case 'days':
-      return 'Days';
-    case 'hours':
-      return 'Hours';
-    case 'minutes':
-      return 'Minutes';
-    case 'seconds':
-      return 'Seconds';
-    default:
-      setError('No such message key: ' + messageKey);
+  var translations = {
+    'en': {
+      'timer-progress': 'This timer will expire in',
+      'timer-finished': 'This timer has been expired since',
+      'months': 'Months',
+      'days': 'Days',
+      'hours': 'Hours',
+      'minutes': 'Minutes',
+      'seconds': 'Seconds',
+    },
+  };
+
+  var messages = translations[language];
+  if (!messages) {
+    setError('No translations for language: ' + language);
+    return null;
   }
+
+  var message = messages[messageKey];
+  if (!message) {
+    setError('No such message key: ' + messageKey);
+    return null;
+  }
+
+  return message;
 }
 
 var SECONDS_MS = 1000;
