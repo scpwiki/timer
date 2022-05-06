@@ -114,6 +114,15 @@
       var MONTHS_ENUM = 4;
       var YEARS_ENUM = 5;
 
+      function insertCSS(styling) {
+        var head = document.head || document.getElementsByTagName('head')[0];
+        var style = document.createElement('style');
+
+        style.type = 'text/css';
+        style.appendChild(document.createTextNode(styling));
+        head.appendChild(style);
+      }
+
       // Trim off sub-day time information
       function trimDate(date) {
         return new Date(
@@ -314,6 +323,7 @@
         var timestamp = parameters.get('time');
         var progressMessage = parameters.get('progress');
         var finishedMessage = parameters.get('finished');
+        var styling = parameters.get('style'); // allows custom CSS to be injected
 
         // Check parameters
         if (!language) {
@@ -334,6 +344,11 @@
           }
         } catch (error) {
           setError('Invalid timestamp', error);
+        }
+
+        // Insert custom CSS, if any
+        if (styling !== null) {
+          insertCSS(style);
         }
 
         // Initialize clock
