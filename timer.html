@@ -71,6 +71,7 @@
       function getMessage(language, messageKey) {
         var translations = {
           'en': {
+            'timer-description': 'Timer expiring at',
             'timer-progress': 'This timer will expire in',
             'timer-finished': 'This timer has been expired since',
             'months': 'Months',
@@ -246,6 +247,10 @@
         } catch (error) {
           setError('Invalid timestamp', error);
         }
+
+        // Set title.
+        // Since this is meant to be used as an iframe, setting it every tick is pointless.
+        document.title = getMessage(language, 'timer-description') + ' ' + endTime;
 
         // Initialize clock
         createTimer(language, timestamp, progressMessage, finishedMessage);
