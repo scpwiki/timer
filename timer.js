@@ -11,8 +11,10 @@ function setError(primary, secondary = null) {
 function getMessage(language, messageKey) {
   var translations;
   switch (messageKey) {
-    case '':
-      break;
+    case 'timer-progress':
+      return 'This timer will expire in';
+    case 'timer-finished':
+      return 'This timer has been expired since';
     default:
       setError('No such message key: ' + messageKey);
   }
@@ -57,7 +59,13 @@ function timeRemaining(endTime) {
   };
 }
 
-function createTimer(language, timestamp) {
+function createTimer(language, timestamp, progressMessage, finishedMessage) {
+  progressMessage = progressMessage || getMessage(language, 'timer-progress');
+  finishedMessage = finishedMessage || getMessage(language, 'timer-finished');
+
+  function updateTimer() {
+  }
+
 }
 
 function setup() {
@@ -65,6 +73,8 @@ function setup() {
   var parameters = new URLSearchParams(window.location.href);
   var language = parameters.get('lang');
   var timestamp = parameters.get('time');
+  var progressMessage = parameters.get('msg1');
+  var finishedMessage = parameters.get('msg2');
 
   // Check parameters
   if (!language) {
@@ -88,7 +98,7 @@ function setup() {
   }
 
   // Initialize clock
-  createTimer(language, timestamp);
+  createTimer(language, timestamp, progressMessage, finishedMessage);
 }
 
 setup();
