@@ -233,12 +233,12 @@
 
         // Check parameters
         if (!language) {
-          setError('No language set', 'Use "en" for English');
+          setError('No language set', 'Parameter is "lang". Use "en" for English.');
           return;
         }
 
         if (!timestamp) {
-          setError('No timestamp set');
+          setError('No timestamp set', 'Parameter is "time". You can use a UNIX timestamp or an ISO string.');
           return;
         }
 
