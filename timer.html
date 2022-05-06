@@ -217,6 +217,10 @@
           }
         }
 
+        // Set title.
+        // Since this is meant to be used as an iframe, setting it every tick is pointless.
+        document.title = getMessage(language, 'timer-description') + ' ' + endTime;
+
         // Configure timer to run regularly.
         updateTimer();
         setInterval(updateTimer, 1000);
@@ -251,10 +255,6 @@
         } catch (error) {
           setError('Invalid timestamp', error);
         }
-
-        // Set title.
-        // Since this is meant to be used as an iframe, setting it every tick is pointless.
-        document.title = getMessage(language, 'timer-description') + ' ' + endTime;
 
         // Initialize clock
         createTimer(language, timestamp, progressMessage, finishedMessage);
