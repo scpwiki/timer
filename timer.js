@@ -26,11 +26,11 @@ var MONTHS_MS = DAYS_MS * 30;
 
 function timeRemaining(endTime) {
   var elapsed = endTime - new Date();
-  var finished = false;
+  var finished = true;
 
   if (elapsed < 0) {
     elapsed = -elapsed;
-    finished = true;
+    finished = false;
   }
 
   var months = Math.floor(elapsed / MONTHS_MS);
