@@ -186,6 +186,11 @@
         }
       }
 
+      function setTimerFieldVisibility(field, visible) {
+        var element = document.getElementById('timer-' + field + '-container');
+        element.style.display = visible ? 'block' : 'none';
+      }
+
       function createTimer(language, timestamp, progressMessage, finishedMessage) {
         var endTime = new Date(timestamp);
         progressMessage = progressMessage || getMessage(language, 'timer-progress');
