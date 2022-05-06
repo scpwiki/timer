@@ -42,9 +42,16 @@ var HOURS_MS = MINUTES_MS * 60;
 var DAYS_MS = HOURS_MS * 24;
 var MONTHS_MS = DAYS_MS * 30;
 
+var SECONDS_ENUM = 0;
+var MINUTES_ENUM = 1;
+var HOURS_ENUM = 2;
+var DAYS_ENUM = 3;
+var MONTHS_ENUM = 4;
+
 function timeRemaining(endTime) {
   var elapsed = endTime - new Date();
   var finished = true;
+  var highest = null;
 
   if (elapsed < 0) {
     elapsed = -elapsed;
@@ -53,17 +60,33 @@ function timeRemaining(endTime) {
 
   var months = Math.floor(elapsed / MONTHS_MS);
   elapsed = Math.floor(elapsed % MONTHS_MS);
+  if (months > 0 && highest === null) {
+    highest = MONTHS_ENUM;
+  }
 
   var days = Math.floor(elapsed / DAYS_MS);
   elapsed = Math.floor(elapsed % DAYS_MS);
+  if (days > 0 && highest === null) {
+    highest = DAYS_ENUM;
+  }
 
   var hours = Math.floor(elapsed / HOURS_MS);
   elapsed = Math.floor(elapsed % HOURS_MS);
+  if (hours > 0 && highest === null) {
+    highest = HOURS_ENUM;
+  }
 
   var minutes = Math.floor(elapsed / MINUTES_MS);
   elapsed = Math.floor(elapsed % MINUTES_MS);
+  if (minutes > 0 && highest === null) {
+    highest = MINUTES_ENUM;
+  }
 
   var seconds = Math.floor(elapsed / SECONDS_MS);
+  elapsed = Math.floor(elapsed % MINUTES_MS);
+  if (highest === null) {
+    highest = SECONDS_ENUM;
+  }
 
   return {
     months: months,
@@ -72,6 +95,7 @@ function timeRemaining(endTime) {
     minutes: minutes,
     seconds: seconds,
     finished: finished,
+    highest: highest,
   };
 }
 
