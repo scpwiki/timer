@@ -78,7 +78,11 @@ function setup() {
   }
 
   try {
-    timestamp = parseFloat(timestamp);
+    if (/\d+(\.\d+)?/.exec(timestamp)) {
+      timestamp = parseFloat(timestamp) / 1000;
+    } else {
+      timestamp = Date.parse(timestamp);
+    }
   } catch (error) {
     setError('Invalid timestamp', error);
   }
