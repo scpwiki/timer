@@ -224,7 +224,8 @@
 
       function setup() {
         // Get parameters
-        var parameters = new URLSearchParams(window.location.href);
+        var url = new URL(window.location.href);
+        var parameters = new URLSearchParams(url.search);
         var language = parameters.get('lang');
         var timestamp = parameters.get('time');
         var progressMessage = parameters.get('msg1');
