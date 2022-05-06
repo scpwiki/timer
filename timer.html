@@ -30,33 +30,33 @@
       <div id="timer-clock">
         <span id="timer-error-secondary" class="error"></span>
 
-        <div>
-          <span id="timer-years-value"></span>
+        <div id="timer-years-container">
+          <span id="timer-years"></span>
           <span id="timer-years-label"></span>
         </div>
 
-        <div>
-          <span id="timer-months-value"></span>
+        <div id="timer-months-container">
+          <span id="timer-months"></span>
           <span id="timer-months-label"></span>
         </div>
 
-        <div>
-          <span id="timer-days-value"></span>
+        <div id="timer-days-container">
+          <span id="timer-days"></span>
           <span id="timer-days-label"></span>
         </div>
 
-        <div>
-          <span id="timer-hours-value"></span>
+        <div id="timer-hours-container">
+          <span id="timer-hours"></span>
           <span id="timer-hours-label"></span>
         </div>
 
-        <div>
-          <span id="timer-minutes-value"></span>
+        <div id="timer-minutes-container">
+          <span id="timer-minutes"></span>
           <span id="timer-minutes-label"></span>
         </div>
 
-        <div>
-          <span id="timer-seconds-value"></span>
+        <div id="timer-seconds-container">
+          <span id="timer-seconds"></span>
           <span id="timer-seconds-label"></span>
         </div>
       </div>
@@ -174,16 +174,14 @@
       }
 
       function setTimerField(language, field, value) {
-        var valueElement = document.getElementById('timer-' + field + '-value');
-        var labelElement = document.getElementById('timer-' + field + '-label');
+        var visible = value !== null;
 
-        if (value === null) {
-          valueElement.innerText = '';
-          labelElement.innerText = '';
-        } else {
-          valueElement.innerText = value;
-          labelElement.innerText = getMessage(language, field);
+        if (visible) {
+          document.getElementById('timer-' + field + '-value').innerText = value;
+          document.getElementById('timer-' + field + '-label').innerText = getMessage(language, field);
         }
+
+        setTimerFieldVisibility(field, visible);
       }
 
       function setTimerFieldVisibility(field, visible) {
