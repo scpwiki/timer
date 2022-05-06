@@ -6,7 +6,25 @@
     <meta charset="UTF-8">
 
     <style>
-      <!-- TODO: really basic, needs polish -->
+      /* Main elements */
+      #title {
+        font-family: Arial, sans-serif;
+      }
+
+      .unit {
+        display: inline-block;
+      }
+
+      .unit-value {
+        font-family: monospace;
+        font-size: 3em;
+        padding: 0.25em;
+      }
+
+      /* Basic utility classes */
+      .hidden {
+        display: none;
+      }
 
       .error {
         color: #b01;
@@ -273,7 +291,12 @@
 
       function setTimerFieldVisibility(field, visible) {
         var element = document.getElementById(field + '-div');
-        element.style.display = visible ? 'block' : 'none';
+
+        if (visible) {
+          element.classList.remove('hidden');
+        } else {
+          element.classList.add('hidden');
+        }
       }
 
       function createTimer(language, timestamp, progressMessage, finishedMessage) {
