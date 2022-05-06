@@ -154,13 +154,13 @@
       // Based on https://stackoverflow.com/a/49201872
       // Calculate differences greater than a day.
       function dateDiff(startTime, endTime) {
-        var startDate = trimDate(startDate);
-        var endDate = trimDate(endDate);
+        var startDate = trimDate(startTime);
+        var endDate = trimDate(endTime);
 
         var february = getDaysInFebruary(startDate.getFullYear());
         var daysInMonth = [31, february, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-        var yearDiff = endDate.getFullYear() - startYear;
+        var yearDiff = endDate.getFullYear() - startDate.getFullYear();
         var monthDiff = endDate.getMonth() - startDate.getMonth();
         if (monthDiff < 0) {
           yearDiff--;
