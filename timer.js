@@ -130,11 +130,15 @@ function createTimer(language, timestamp, progressMessage, finishedMessage) {
     var remaining = timeRemaining(endTime);
 
     // Set title message
-    var titleMessage = remaining.finished
-      ? getMessage(language, 'timer-finished')
-      ? getMessage(language, 'timer-progress');
+    var titleElement = document.getElementById('timer-title');
 
-    document.getElementById('timer-title').innerText = titleMessage;
+    if (remaining.finished) {
+      titleElement.innerText = getMessage(language, 'timer-finished');
+      titleElement.classList = ['finished'];
+    } else {
+      titleElement.innerText = getMessage(language, 'timer-progress');
+      titleElement.classList = ['progress'];
+    }
 
     // Set individual timer fields
     for (var i = 0; i < timerFields.length; i++) {

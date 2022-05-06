@@ -1,3 +1,11 @@
 .error {
   color: #b01;
 }
+
+.progress {
+  color: black;
+}
+
+.finished {
+  color: #282;
+}
