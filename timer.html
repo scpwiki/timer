@@ -232,8 +232,8 @@
         var parameters = new URLSearchParams(url.search);
         var language = parameters.get('lang');
         var timestamp = parameters.get('time');
-        var progressMessage = parameters.get('msg1');
-        var finishedMessage = parameters.get('msg2');
+        var progressMessage = parameters.get('progress');
+        var finishedMessage = parameters.get('finished');
 
         // Check parameters
         if (!language) {
