@@ -204,12 +204,12 @@
           // Set individual timer fields
           for (var i = 0; i < timerFields.length; i++) {
             var field = timerFields[i][0];
-            var enum = timerFields[i][1];
+            var fieldEnum = timerFields[i][1];
             var padWidth = timerFields[i][2];
 
             // If the value is to be shown, then display it.
             // Ensure digits are padded to the appropriate width.
-            var value = remaining.highest >= enum
+            var value = remaining.highest >= fieldEnum
               ? String(remaining[field]).padStart(padWidth, '0')
               : null;
 
