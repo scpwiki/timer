@@ -15,6 +15,16 @@ function getMessage(language, messageKey) {
       return 'This timer will expire in';
     case 'timer-finished':
       return 'This timer has been expired since';
+    case 'months':
+      return 'Months';
+    case 'days':
+      return 'Days';
+    case 'hours':
+      return 'Hours';
+    case 'minutes':
+      return 'Minutes';
+    case 'seconds':
+      return 'Seconds';
     default:
       setError('No such message key: ' + messageKey);
   }
