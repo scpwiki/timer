@@ -27,41 +27,41 @@
 
     <div id="timer">
       <h1>
-        <span id="timer-title"></span>
-        <span id="timer-error" class="error"></span>
+        <span id="title"></span>
+        <span id="error" class="error"></span>
       </h1>
 
-      <div id="timer-clock">
-        <span id="timer-error-secondary" class="error"></span>
+      <div id="clock">
+        <span id="error-sub" class="error"></span>
 
-        <div id="timer-years-container">
-          <span id="timer-years-value"></span>
-          <span id="timer-years-label"></span>
+        <div id="years-div">
+          <span id="years"></span>
+          <span id="years-label"></span>
         </div>
 
-        <div id="timer-months-container">
-          <span id="timer-months-value"></span>
-          <span id="timer-months-label"></span>
+        <div id="months-div">
+          <span id="months"></span>
+          <span id="months-label"></span>
         </div>
 
-        <div id="timer-days-container">
-          <span id="timer-days-value"></span>
-          <span id="timer-days-label"></span>
+        <div id="days-div">
+          <span id="days"></span>
+          <span id="days-label"></span>
         </div>
 
-        <div id="timer-hours-container">
-          <span id="timer-hours-value"></span>
-          <span id="timer-hours-label"></span>
+        <div id="hours-div">
+          <span id="hours"></span>
+          <span id="hours-label"></span>
         </div>
 
-        <div id="timer-minutes-container">
-          <span id="timer-minutes-value"></span>
-          <span id="timer-minutes-label"></span>
+        <div id="minutes-div">
+          <span id="minutes"></span>
+          <span id="minutes-label"></span>
         </div>
 
-        <div id="timer-seconds-container">
-          <span id="timer-seconds-value"></span>
-          <span id="timer-seconds-label"></span>
+        <div id="seconds-div">
+          <span id="seconds"></span>
+          <span id="seconds-label"></span>
         </div>
       </div>
     </div>
@@ -69,10 +69,10 @@
     <script>
       // Errors are only in English unfortunately
       function setError(primary, secondary = null) {
-        document.getElementById('timer-error').innerText = primary;
+        document.getElementById('error').innerText = primary;
 
         if (secondary) {
-          document.getElementById('timer-error-secondary').innerText = secondary;
+          document.getElementById('error-sub').innerText = secondary;
         }
       }
 
@@ -264,15 +264,15 @@
         var visible = value !== null;
 
         if (visible) {
-          document.getElementById('timer-' + field + '-value').innerText = value;
-          document.getElementById('timer-' + field + '-label').innerText = getMessage(language, field);
+          document.getElementById(field).innerText = value;
+          document.getElementById(field + '-label').innerText = getMessage(language, field);
         }
 
         setTimerFieldVisibility(field, visible);
       }
 
       function setTimerFieldVisibility(field, visible) {
-        var element = document.getElementById('timer-' + field + '-container');
+        var element = document.getElementById(field + '-div');
         element.style.display = visible ? 'block' : 'none';
       }
 
