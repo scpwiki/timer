@@ -274,10 +274,10 @@
           var titleElement = document.getElementById('timer-title');
 
           if (remaining.finished) {
-            titleElement.innerText = getMessage(language, 'timer-finished');
+            titleElement.innerText = finishedMessage;
             titleElement.classList = ['finished'];
           } else {
-            titleElement.innerText = getMessage(language, 'timer-progress');
+            titleElement.innerText = progressMessage;
             titleElement.classList = ['progress'];
           }
 
