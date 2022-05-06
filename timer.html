@@ -118,6 +118,10 @@
           finished = false;
         }
 
+        // BUG: Doesn't properly account for differing durations
+        //      of months. This is definitely possible to do with
+        //      a more complex implementation, but since most timer
+        //      uses are < 1 week, this shouldn't matter much.
         var months = Math.floor(elapsed / MONTHS_MS);
         elapsed = Math.floor(elapsed % MONTHS_MS);
         if (months > 0 && highest === null) {
