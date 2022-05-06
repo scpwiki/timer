@@ -283,7 +283,6 @@
 
         if (visible) {
           document.getElementById(field).innerText = value;
-          document.getElementById(field + '-label').innerText = getMessage(language, field);
         }
 
         setTimerFieldVisibility(field, visible);
@@ -313,6 +312,12 @@
           ['minutes', MINUTES_ENUM, 2],
           ['seconds', SECONDS_ENUM, 2],
         ];
+
+        // Initial application of field labels
+        for (var i = 0; i < timerFields.length; i++) {
+          var field = timerFields[i][0];
+          document.getElementById(field + '-label').innerText = getMessage(language, field);
+        }
 
         function updateTimer() {
           var remaining = timeRemaining(targetTime);
