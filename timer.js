@@ -99,6 +99,19 @@ function timeRemaining(endTime) {
   };
 }
 
+function setTimerField(language, field, value) {
+  var valueElement = document.getElementById('timer-' + field + '-value');
+  var labelElement = document.getElementById('timer-' + field + '-label');
+
+  if (value === null) {
+    valueElement.innerText = '';
+    labelElement.innerText = '';
+  } else {
+    valueElement.innerText = value;
+    labelElement.innerText = getMessage(language, field);
+  }
+}
+
 function createTimer(language, timestamp, progressMessage, finishedMessage) {
   progressMessage = progressMessage || getMessage(language, 'timer-progress');
   finishedMessage = finishedMessage || getMessage(language, 'timer-finished');
