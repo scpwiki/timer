@@ -113,12 +113,43 @@ function setTimerField(language, field, value) {
 }
 
 function createTimer(language, timestamp, progressMessage, finishedMessage) {
+  var endTime = new Date(timestamp);
   progressMessage = progressMessage || getMessage(language, 'timer-progress');
   finishedMessage = finishedMessage || getMessage(language, 'timer-finished');
 
+  // Update routine, to invoke every second
+  var timerFields = [
+    ['months', MONTHS_ENUM],
+    ['days', DAYS_ENUM],
+    ['hours', HOURS_ENUM],
+    ['minutes', MINUTES_ENUM],
+    ['seconds', SECONDS_ENUM],
+  ];
+
   function updateTimer() {
+    var remaining = timeRemaining(endTime);
+
+    // Set title message
+    var titleMessage = remaining.finished
+      ? getMessage(language, 'timer-finished')
+      ? getMessage(language, 'timer-progress');
+
+    document.getElementById('timer-title').innerText = titleMessage;
+
+    // Set individual timer fields
+    for (var i = 0; i < timerFields.length; i++) {
+      var field = timerFields[i][0];
+      var enum = timerFields[i][1];
+
+      var value = remaining.highest >= enum
+        ? String(remaining[field]).padStart(2, '0')
+        : null;
+
+      setTimerField(language, field, value);
+    }
   }
 
+  // TODO
 }
 
 function setup() {
