@@ -22,6 +22,10 @@
         margin-left: 0.2em;
       }
 
+      #build {
+        margin: 0.4em;
+      }
+
       /* Basic utility classes */
       .hidden {
         display: none;
@@ -112,6 +116,8 @@
       </select>
     </fieldset>
 
+    <button id="build"></button>
+
     <script>
       // Constants
       var SECONDS_MS = 1000;
@@ -158,7 +164,7 @@
             'start-time': 'Start Time',
             'start-time-now': 'Now',
             'start-time-later': 'Later',
-            // TODO
+            'build-timer': 'Build timer',
           },
 
           // Pig Latin
@@ -252,6 +258,8 @@
         setMessage('unit-week');
         setMessage('unit-month');
         setMessage('unit-year');
+
+        setMessage('build', 'build-timer');
 
         // Set initial "later" date, as an example. Current date plus six months.
         var now = new Date().getTime();
