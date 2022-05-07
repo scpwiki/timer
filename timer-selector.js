@@ -206,6 +206,10 @@ function getDuration() {
 
   var valueElement = document.getElementById('duration-custom-value');
   var value = parseInt(valueElement.value);
+  if (isNaN(value)) {
+    alert(getMessage(language, 'error-missing'));
+    throw new Error('No value in custom duration selector');
+  }
 
   var unitElement = document.getElementById('duration-custom-unit');
   var unit = parseInt(unitElement.value);
