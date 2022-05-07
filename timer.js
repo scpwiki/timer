@@ -58,6 +58,13 @@ function getMessage(language, messageKey) {
     },
   };
 
+  // Special case:
+  // The 'test' language just echoes the message key back out.
+  if (language === 'test') {
+    return messageKey;
+  }
+
+  // Get message based on language
   var messages = translations[language];
   if (!messages) {
     setError('No translations for language: ' + language);
