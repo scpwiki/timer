@@ -34,6 +34,10 @@
         width: 50%;
       }
 
+      .message-short input {
+        width: 25%;
+      }
+
       #build {
         margin: 0.4em;
       }
@@ -147,7 +151,23 @@
       </div>
     </fieldset>
 
-    <fieldset id="misc">
+    <fieldset id="css">
+      <legend id="css-label"></legend>
+
+      <div class="message message-short">
+        <label id="width-label"></label>
+        <input id="width" type="text" value="500px"></input>
+      </div>
+
+      <div class="message message-short">
+        <label id="height-label"></label>
+        <input id="height" type="text" value="250px"></input>
+      </div>
+
+      <div class="message">
+        <label id="custom-css-label"></label><br>
+        <textarea id="custom-css" cols="60" rows="4"></textarea>
+      </div>
     </fieldset>
 
     <!-- output -->
@@ -207,6 +227,10 @@
             'messages': 'Messages',
             'message-progress': 'Timer in-progress (optional)',
             'message-finished': 'Timer finished (optional)',
+            'css': 'CSS (Advanced)',
+            'width': 'Width',
+            'height': 'Height',
+            'css-extra': 'Custom timer CSS (optional)',
             'build-timer': 'Build timer',
             'error-missing': 'Please make a selection in each section first.',
             'error-invalid': 'Invalid internal state, please file a bug report.',
@@ -375,6 +399,11 @@
         document.getElementById('message-finished').placeholder = getMessage(language, 'timer-finished');
         setMessage('message-progress-label', 'message-progress');
         setMessage('message-finished-label', 'message-finished');
+
+        setMessage('css-label', 'css');
+        setMessage('width-label', 'width');
+        setMessage('height-label', 'height');
+        setMessage('custom-css-label', 'css-extra');
 
         setMessage('build', 'build-timer');
 
