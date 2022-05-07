@@ -141,8 +141,6 @@ function dateDiff(startDate, endDate) {
     dayDiff += daysInMonth[startDate.getMonth()];
   }
 
-  // issue is 0.8 day diff -> 1 day diff
-
   return {
     years: yearDiff,
     months: monthDiff,
