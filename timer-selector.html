@@ -233,6 +233,9 @@
             'width': 'Width',
             'css-extra': 'Custom timer CSS (optional)',
             'template': 'Output template',
+            'template-generic': '%%iframe%%',
+            'template-deletion': 'Beginning deletion vote at -10.\n\n%%iframe%%\n\nIf this article is over a year old, you are not the author, and you want to rewrite this article, request to do so in the [/forum/t-14018096/rewrite-request-thread#post-4916192 Rewrite Request Thread]. Please request permission from the author and make sure you copy the page source to your sandbox. **Do not reply to this post unless you are staff.**',
+            'template-ban': 'This user will be eligible to be unbanned in:\n\n%%iframe%%',
             'build-timer': 'Build timer',
             'error-missing': 'Please make a selection in each section first.',
             'error-invalid': 'Invalid internal state, please file a bug report.',
@@ -470,12 +473,18 @@
       }
 
       function initializeHooks(language) {
+        document.getElementById('timer-type-generic').onclick = function () {
+          document.getElementById('template').value = getMessage(language, 'template-generic');
+        };
+
         document.getElementById('timer-type-deletion').onclick = function () {
           document.getElementById('duration-1d').click();
+          document.getElementById('template').value = getMessage(language, 'template-deletion');
         };
 
         document.getElementById('timer-type-ban').onclick = function () {
           document.getElementById('duration-4w').click();
+          document.getElementById('template').value = getMessage(language, 'template-ban');
         };
 
         document.getElementById('build').onclick = function () {
