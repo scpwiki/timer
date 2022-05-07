@@ -109,6 +109,19 @@
     </div>
 
     <script>
+      // Constants
+      var SECONDS_MS = 1000;
+      var MINUTES_MS = SECONDS_MS * 60;
+      var HOURS_MS = MINUTES_MS * 60;
+      var DAYS_MS = HOURS_MS * 24;
+
+      var SECONDS_ENUM = 0;
+      var MINUTES_ENUM = 1;
+      var HOURS_ENUM = 2;
+      var DAYS_ENUM = 3;
+      var MONTHS_ENUM = 4;
+      var YEARS_ENUM = 5;
+
       // Errors are only in English unfortunately
       function setError(primary, secondary = null) {
         var titleElement = document.getElementById('title');
@@ -170,18 +183,6 @@
 
         return message;
       }
-
-      var SECONDS_MS = 1000;
-      var MINUTES_MS = SECONDS_MS * 60;
-      var HOURS_MS = MINUTES_MS * 60;
-      var DAYS_MS = HOURS_MS * 24;
-
-      var SECONDS_ENUM = 0;
-      var MINUTES_ENUM = 1;
-      var HOURS_ENUM = 2;
-      var DAYS_ENUM = 3;
-      var MONTHS_ENUM = 4;
-      var YEARS_ENUM = 5;
 
       function insertCSS(styling) {
         var head = document.head || document.getElementsByTagName('head')[0];
