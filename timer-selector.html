@@ -35,8 +35,32 @@
     <div id="timer-start-date">
     </div>
 
-    <fieldset id="timer-duration">
-      <legend id="timer-duration-label">
+    <fieldset id="duration">
+      <legend id="duration-label"></legend>
+
+      <!-- 1 hour -->
+      <input type="radio" id="duration-1h" name="duration" value="3600000">
+      <label for="3600000"></label>
+
+      <!-- 1 day -->
+      <input type="radio" id="duration-1d" name="duration" value="86400000">
+      <label for="86400000"></label>
+
+      <!-- 2 days -->
+      <input type="radio" id="duration-2d" name="duration" value="172800000">
+      <label for="172800000"></label>
+
+      <!-- 1 week -->
+      <input type="radio" id="duration-1w" name="duration" value="604800000">
+      <label for="604800000"></label>
+
+      <!-- 2 weeks -->
+      <input type="radio" id="duration-2w" name="duration" value="1209600000">
+      <label for="1209600000"></label>
+
+      <!-- 1 year -->
+      <input type="radio" id="duration-1y" name="duration" value="31536000000">
+      <label for="31536000000"></label>
     </fieldset>
 
     <script>
@@ -58,13 +82,13 @@
         var translations = {
           // English
           'en': {
-            'timer-description': 'Timer expiring at',
+            'duration': 'Duration',
             // TODO
           },
 
           // Pig Latin
           'pig': {
-            'timer-description': 'Imertay expiringyay atyay',
+            // TODO
           },
         };
 
@@ -124,6 +148,10 @@
         ].join('');
       }
 
+      function initializeMessages(language) {
+        document.getElementById('timer-duration-label').innerText = getMessage(language, 'duration');
+      }
+
       function setup() {
         // Get parameters
         var url = new URL(window.location.href);
@@ -142,7 +170,7 @@
           insertCSS(style);
         }
 
-        // TODO
+        initializeMessages(language);
       }
 
       setup();
