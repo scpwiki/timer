@@ -116,7 +116,10 @@
       </select>
     </fieldset>
 
+    <!-- output -->
     <button id="build"></button>
+
+    <textarea id="output" class="hidden" rows="1" cols="80" readonly></textarea>
 
     <script>
       // Constants
@@ -230,6 +233,11 @@
         ].join('');
       }
 
+      function buildTimer(language) {
+        // TODO
+      }
+
+      // Initialization
       function initializeMessages(language) {
         function setMessage(id, messageKey = null) {
           document.getElementById(id).innerText = getMessage(language, messageKey || id);
@@ -270,13 +278,17 @@
         document.getElementById('start-later-value').value = dateValue;
       }
 
-      function initializeHooks() {
+      function initializeHooks(language) {
         document.getElementById('timer-type-deletion').onclick = function () {
           document.getElementById('duration-1d').click();
         };
 
         document.getElementById('timer-type-ban').onclick = function () {
           document.getElementById('duration-4w').click();
+        };
+
+        document.getElementById('build').onclick = function () {
+          buildTimer(language);
         };
       }
 
@@ -299,7 +311,7 @@
         }
 
         initializeMessages(language);
-        initializeHooks();
+        initializeHooks(language);
       }
 
       setup();
