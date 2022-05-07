@@ -82,15 +82,6 @@ function insertCSS(styling) {
   head.appendChild(style);
 }
 
-// Trim off sub-day time information
-function trimDate(date) {
-  return new Date(
-    date.getFullYear(),
-    date.getMonth(),
-    date.getDate(),
-  );
-}
-
 function getDaysInFebruary(startYear) {
   return (startYear % 4 === 0 && startYear % 100 !== 0)
     || startYear % 400 === 0 ? 29 : 28;
@@ -121,10 +112,13 @@ function elapsedData(targetTime) {
 
 // Based on https://stackoverflow.com/a/49201872
 // Calculate differences greater than a day.
-function dateDiff(startTime, endTime) {
-  var startDate = trimDate(startTime);
-  var endDate = trimDate(endTime);
+function dateDiff(startDate, endDate) {
+  // Trim sub-day differences to avoid 0.8 days from rounding up.
+  var diff = endDate - startDate;
+  diff -= Math.floor(diff % DAYS_MS);
+  endDate = new Date(startDate.getTime() + diff);
 
+  // Get month data
   var february = getDaysInFebruary(startDate.getFullYear());
   var daysInMonth = [31, february, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
@@ -146,6 +140,8 @@ function dateDiff(startTime, endTime) {
 
     dayDiff += daysInMonth[startDate.getMonth()];
   }
+
+  // issue is 0.8 day diff -> 1 day diff
 
   return {
     years: yearDiff,
