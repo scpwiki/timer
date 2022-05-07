@@ -45,8 +45,8 @@
       <label id="start-now" for="now"></label>
 
       <!-- later / other time -->
-      <input type="radio" name="start" value="other">
-      <label id="start-other" for="other"></label>
+      <input type="radio" name="start" value="later">
+      <label id="start-later" for="later"></label>
     </fieldset>
 
     <fieldset id="duration">
@@ -106,7 +106,7 @@
             'duration-1y': '1 Year',
             'start-time': 'Start time',
             'start-time-now': 'Now',
-            'start-time-other': 'Other',
+            'start-time-later': 'Later',
             // TODO
           },
 
@@ -180,7 +180,7 @@
 
         setMessage('start-label', 'start-time');
         setMessage('start-now', 'start-time-now');
-        setMessage('start-other', 'start-time-other');
+        setMessage('start-later', 'start-time-later');
 
         setMessage('duration-label', 'duration');
         setMessage('duration-1h');
