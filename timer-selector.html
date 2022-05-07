@@ -47,6 +47,7 @@
       <!-- later / other time -->
       <input type="radio" name="start" value="later">
       <label id="start-later" for="later"></label>
+      <input type="text" id="start-later-value" size="10"></input>
     </fieldset>
 
     <fieldset id="duration">
@@ -78,6 +79,12 @@
     </fieldset>
 
     <script>
+      // Constants
+      var SECONDS_MS = 1000;
+      var MINUTES_MS = SECONDS_MS * 60;
+      var HOURS_MS = MINUTES_MS * 60;
+      var DAYS_MS = HOURS_MS * 24;
+
       // Errors are only in English unfortunately
       function setError(primary, secondary = null) {
         var errorElement = document.getElementById('error');
@@ -189,6 +196,14 @@
         setMessage('duration-1w');
         setMessage('duration-2w');
         setMessage('duration-1y');
+
+        // Set initial "later" date, as an example. Current date plus six months.
+        var now = new Date().getTime();
+        var later = new Date(now + 6 * 30 * DAYS_MS);
+        var month = String(later.getMonth() + 1).padStart(2, '0');
+        var day = String(later.getDay() + 1).padStart(2, '0');
+        var dateValue = later.getFullYear() + '-' + month + '-' + day;
+        document.getElementById('start-later-value').value = dateValue;
       }
 
       function setup() {
