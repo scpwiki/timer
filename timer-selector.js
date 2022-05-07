@@ -181,7 +181,7 @@ function findCheckedItem(selector) {
   }
 
   alert(getMessage(language, 'error-missing'));
-  throw new Error('Missing element in getStartTimestamp()');
+  throw new Error('Could not find a checked radio button item');
 }
 
 function getStartDate(language) {
