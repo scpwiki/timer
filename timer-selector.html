@@ -38,8 +38,21 @@
 
     <h1 id="error" class="hidden"></h1>
 
-    <div id="timer-type">
-    </div>
+    <fieldset id="timer-type">
+      <legend id="timer-type-label"></legend>
+
+      <!-- Generic -->
+      <input type="radio" name="timer-type" value="generic" checked>
+      <label id="timer-type-generic" for="timer-type"></label>
+
+      <!-- Deletion -->
+      <input type="radio" name="timer-type" value="deletion">
+      <label id="timer-type-deletion" for="timer-type"></label>
+
+      <!-- Ban -->
+      <input type="radio" name="timer-type" value="ban">
+      <label id="timer-type-ban" for="timer-type"></label>
+    </fieldset>
 
     <div id="timer-text">
     </div>
@@ -111,6 +124,10 @@
         var translations = {
           // English
           'en': {
+            'timer-type': 'Timer Type',
+            'timer-type-generic': 'Generic',
+            'timer-type-deletion': 'Deletion',
+            'timer-type-ban': 'Ban',
             'duration': 'Duration',
             'duration-1h': '1 Hour',
             'duration-1d': '1 Day',
@@ -118,7 +135,7 @@
             'duration-1w': '1 Week',
             'duration-2w': '2 Weeks',
             'duration-1y': '1 Year',
-            'start-time': 'Start time',
+            'start-time': 'Start Time',
             'start-time-now': 'Now',
             'start-time-later': 'Later',
             // TODO
@@ -191,6 +208,11 @@
         function setMessage(id, messageKey = null) {
           document.getElementById(id).innerText = getMessage(language, messageKey || id);
         }
+
+        setMessage('timer-type-label', 'timer-type');
+        setMessage('timer-type-generic', 'timer-type-generic');
+        setMessage('timer-type-deletion', 'timer-type-deletion');
+        setMessage('timer-type-ban', 'timer-type-ban');
 
         setMessage('start-label', 'start-time');
         setMessage('start-now', 'start-time-now');
