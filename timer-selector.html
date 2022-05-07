@@ -16,7 +16,12 @@
       }
 
       #error {
+        text-align: center;
         color: #b01;
+      }
+
+      .error-secondary {
+        font-size: 0.6em;
       }
     </style>
   </head>
@@ -24,7 +29,7 @@
   <body>
     <noscript>This application requires Javascript to function.</noscript>
 
-    <div id="error" class="hidden"></div>
+    <h1 id="error" class="hidden"></h1>
 
     <div id="timer-type">
     </div>
@@ -32,35 +37,44 @@
     <div id="timer-text">
     </div>
 
-    <div id="timer-start-date">
-    </div>
+    <fieldset id="start">
+      <legend id="start-label"></legend>
+
+      <!-- now -->
+      <input type="radio" name="start" value="now">
+      <label id="start-now" for="now"></label>
+
+      <!-- later / other time -->
+      <input type="radio" name="start" value="other">
+      <label id="start-other" for="other"></label>
+    </fieldset>
 
     <fieldset id="duration">
       <legend id="duration-label"></legend>
 
       <!-- 1 hour -->
-      <input type="radio" id="duration-1h" name="duration" value="3600000">
-      <label for="3600000"></label>
+      <input type="radio" name="duration" value="3600000">
+      <label id="duration-1h" for="3600000"></label>
 
       <!-- 1 day -->
-      <input type="radio" id="duration-1d" name="duration" value="86400000">
-      <label for="86400000"></label>
+      <input type="radio" name="duration" value="86400000">
+      <label id="duration-1d" for="86400000"></label>
 
       <!-- 2 days -->
-      <input type="radio" id="duration-2d" name="duration" value="172800000">
-      <label for="172800000"></label>
+      <input type="radio" name="duration" value="172800000">
+      <label id="duration-2d" for="172800000"></label>
 
       <!-- 1 week -->
-      <input type="radio" id="duration-1w" name="duration" value="604800000">
-      <label for="604800000"></label>
+      <input type="radio" name="duration" value="604800000">
+      <label id="duration-1w" for="604800000"></label>
 
       <!-- 2 weeks -->
-      <input type="radio" id="duration-2w" name="duration" value="1209600000">
-      <label for="1209600000"></label>
+      <input type="radio" name="duration" value="1209600000">
+      <label id="duration-2w" for="1209600000"></label>
 
       <!-- 1 year -->
-      <input type="radio" id="duration-1y" name="duration" value="31536000000">
-      <label for="31536000000"></label>
+      <input type="radio" name="duration" value="31536000000">
+      <label id="duration-1y" for="31536000000"></label>
     </fieldset>
 
     <script>
@@ -72,6 +86,7 @@
 
         if (secondary) {
           var secondaryErrorElement = document.createElement('div');
+          secondaryErrorElement.classList = ['error-secondary'];
           secondaryErrorElement.innerText = secondary;
           errorElement.appendChild(secondaryErrorElement);
         }
@@ -83,11 +98,20 @@
           // English
           'en': {
             'duration': 'Duration',
+            'duration-1h': '1 Hour',
+            'duration-1d': '1 Day',
+            'duration-2d': '2 Days',
+            'duration-1w': '1 Week',
+            'duration-2w': '2 Weeks',
+            'duration-1y': '1 Year',
+            'time-now': 'Now',
+            'time-other': 'Other',
             // TODO
           },
 
           // Pig Latin
           'pig': {
+            'duration': 'Urationday',
             // TODO
           },
         };
@@ -149,7 +173,20 @@
       }
 
       function initializeMessages(language) {
-        document.getElementById('timer-duration-label').innerText = getMessage(language, 'duration');
+        function setMessage(id, messageKey = null) {
+          document.getElementById(id).innerText = getMessage(language, messageKey || id);
+        }
+
+        setMessage('start-now', 'time-now');
+        setMessage('start-other', 'time-other');
+
+        setMessage('duration-label', 'duration');
+        setMessage('duration-1h');
+        setMessage('duration-1d');
+        setMessage('duration-2d');
+        setMessage('duration-1w');
+        setMessage('duration-2w');
+        setMessage('duration-1y');
       }
 
       function setup() {
