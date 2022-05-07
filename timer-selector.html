@@ -314,9 +314,9 @@
       }
 
       // Timer creation
-      function buildUrl(language, startTimestamp, durationMs, progressMessage, finishedMessage, styling) {
+      function buildUrl(language, startDate, durationMs, progressMessage, finishedMessage, styling) {
         // Calculate target datetime
-        var targetDate = new Date(startTimestamp + durationMs);
+        var targetDate = new Date(startDate.getTime() + durationMs);
 
         // Finally, build URL
         var parameters = new URLSearchParams();
@@ -360,14 +360,14 @@
         throw new Error('Missing element in getStartTimestamp()');
       }
 
-      function getStartTimestamp(language) {
+      function getStartDate(language) {
         var element = findCheckedItem('#start input');
         switch (element.id) {
           case 'start-now':
-            return new Date().getTime();
+            return new Date();
           case 'start-later':
             element = document.getElementById('start-later-value');
-            return parseFloat(element.value);
+            return new Date(element.value);
           default:
             alert(getMessage(language, 'error-invalid'));
             throw new Error('Invalid element ID in getStartDate()');
@@ -377,7 +377,6 @@
       function getDuration() {
         var element = findCheckedItem('#duration input');
         if (element.value !== 'custom') {
-          console.log('number', element.value);
           return parseInt(element.value);
         }
 
@@ -386,7 +385,6 @@
 
         var unitElement = document.getElementById('duration-custom-unit');
         var unit = parseInt(unitElement.value);
-        console.log('custom', value, unit);
 
         return value * unit;
       }
@@ -444,14 +442,14 @@
         outputElement.classList.remove('hidden');
 
         // Gather values
-        var startTimestamp = getStartTimestamp(language);
+        var startDate = getStartDate(language);
         var durationMs = getDuration(language);
         var data = getTextData(language);
 
         // Build wikitext and output
         var url = buildUrl(
           language,
-          startTimestamp,
+          startDate,
           durationMs,
           data.progressMessage,
           data.finishedMessage,
