@@ -121,6 +121,21 @@
       </select>
     </fieldset>
 
+    <fieldset id="messages">
+      <div>
+        <label id="message-progress-label"></label>
+        <input id="message-progress" type="text"></input>
+      </div>
+
+      <div>
+        <label id="message-finished-label"></label>
+        <input id="message-finished" type="text"></input>
+      </div>
+    </fieldset>
+
+    <fieldset id="misc">
+    </fieldset>
+
     <!-- output -->
     <button id="build"></button>
 
@@ -152,6 +167,9 @@
         var translations = {
           // English
           'en': {
+            'timer-description': 'Timer expiring at',
+            'timer-progress': 'This timer will expire in',
+            'timer-finished': 'This timer has been expired since',
             'timer-type': 'Timer Type',
             'timer-type-generic': 'Generic',
             'timer-type-deletion': 'Deletion',
@@ -172,6 +190,8 @@
             'start-time': 'Start Time',
             'start-time-now': 'Now',
             'start-time-later': 'Later',
+            'message-progress': 'Progress message (optional)',
+            'message-finished': 'Finished message (optional)',
             'build-timer': 'Build timer',
             'error-missing': 'Please make a selection in each section first.',
             'error-invalid': 'Invalid internal state, please file a bug report.',
@@ -309,6 +329,8 @@
           document.getElementById(id).innerText = getMessage(language, messageKey || id);
         }
 
+        var element;
+
         setMessage('timer-type-label', 'timer-type');
         setMessage('timer-type-generic-label', 'timer-type-generic');
         setMessage('timer-type-deletion-label', 'timer-type-deletion');
@@ -332,6 +354,11 @@
         setMessage('unit-week');
         setMessage('unit-month');
         setMessage('unit-year');
+
+        document.getElementById('message-progress').placeholder = getMessage(language, 'timer-progress');
+        document.getElementById('message-finished').placeholder = getMessage(language, 'timer-finished');
+        setMessage('message-progress-label', 'message-progress');
+        setMessage('message-finished-label', 'message-finished');
 
         setMessage('build', 'build-timer');
 
