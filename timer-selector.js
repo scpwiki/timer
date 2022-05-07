@@ -4,21 +4,24 @@ var MINUTES_MS = SECONDS_MS * 60;
 var HOURS_MS = MINUTES_MS * 60;
 var DAYS_MS = HOURS_MS * 24;
 
-// Initialization errors are only in English unfortunately
+// Initialization errors are only in English unfortunately.
+// Delay a bit to avoid DOM initialization race conditions.
 function setError(primary, secondary = null) {
-  var errorElement = document.getElementById('error');
-  errorElement.classList.remove('hidden');
-  errorElement.innerText = primary;
+  setTimeout(function() {
+    var errorElement = document.getElementById('error');
+    errorElement.classList.remove('hidden');
+    errorElement.innerText = primary;
 
-  var formElement = document.getElementById('form');
-  formElement.classList.add('hidden');
+    var formElement = document.getElementById('form');
+    formElement.classList.add('hidden');
 
-  if (secondary) {
-    var secondaryErrorElement = document.createElement('div');
-    secondaryErrorElement.classList = ['error-secondary'];
-    secondaryErrorElement.innerText = secondary;
-    errorElement.appendChild(secondaryErrorElement);
-  }
+    if (secondary) {
+      var secondaryErrorElement = document.createElement('div');
+      secondaryErrorElement.classList = ['error-secondary'];
+      secondaryErrorElement.innerText = secondary;
+      errorElement.appendChild(secondaryErrorElement);
+    }
+  }, 5);
 }
 
 // Localization

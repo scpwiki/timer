@@ -11,21 +11,24 @@ var DAYS_ENUM = 3;
 var MONTHS_ENUM = 4;
 var YEARS_ENUM = 5;
 
-// Errors are only in English unfortunately
+// Initialization errors are only in English unfortunately.
+// Delay a bit to avoid DOM initialization race conditions.
 function setError(primary, secondary = null) {
-  var titleElement = document.getElementById('title');
-  titleElement.classList.add('error');
-  titleElement.innerText = primary;
+  setTimeout(function() {
+    var titleElement = document.getElementById('title');
+    titleElement.classList.add('error');
+    titleElement.innerText = primary;
 
-  var clockElement = document.getElementById('clock');
-  clockElement.classList.add('hidden');
+    var clockElement = document.getElementById('clock');
+    clockElement.classList.add('hidden');
 
-  if (secondary) {
-    var messageElement = document.createElement('div');
-    messageElement.classList.add('error-secondary');
-    messageElement.innerText = secondary;
-    titleElement.appendChild(messageElement);
-  }
+    if (secondary) {
+      var messageElement = document.createElement('div');
+      messageElement.classList.add('error-secondary');
+      messageElement.innerText = secondary;
+      titleElement.appendChild(messageElement);
+    }
+  }, 5);
 }
 
 // Localization
