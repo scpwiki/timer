@@ -12,23 +12,20 @@ var MONTHS_ENUM = 4;
 var YEARS_ENUM = 5;
 
 // Initialization errors are only in English unfortunately.
-// Delay a bit to avoid DOM initialization race conditions.
 function setError(primary, secondary = null) {
-  setTimeout(function() {
-    var titleElement = document.getElementById('title');
-    titleElement.classList.add('error');
-    titleElement.innerText = primary;
+  var titleElement = document.getElementById('title');
+  titleElement.classList.add('error');
+  titleElement.innerText = primary;
 
-    var clockElement = document.getElementById('clock');
-    clockElement.classList.add('hidden');
+  var clockElement = document.getElementById('clock');
+  clockElement.classList.add('hidden');
 
-    if (secondary) {
-      var messageElement = document.createElement('div');
-      messageElement.classList.add('error-secondary');
-      messageElement.innerText = secondary;
-      titleElement.appendChild(messageElement);
-    }
-  }, 5);
+  if (secondary) {
+    var messageElement = document.createElement('div');
+    messageElement.classList.add('error-secondary');
+    messageElement.innerText = secondary;
+    titleElement.appendChild(messageElement);
+  }
 }
 
 // Localization
@@ -327,4 +324,4 @@ function setup() {
   createTimer(language, targetTime, progressMessage, finishedMessage);
 }
 
-setup();
+setTimeout(setup, 5);
