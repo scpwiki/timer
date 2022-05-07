@@ -104,8 +104,9 @@
             'duration-1w': '1 Week',
             'duration-2w': '2 Weeks',
             'duration-1y': '1 Year',
-            'time-now': 'Now',
-            'time-other': 'Other',
+            'start-time': 'Start time',
+            'start-time-now': 'Now',
+            'start-time-other': 'Other',
             // TODO
           },
 
@@ -177,8 +178,9 @@
           document.getElementById(id).innerText = getMessage(language, messageKey || id);
         }
 
-        setMessage('start-now', 'time-now');
-        setMessage('start-other', 'time-other');
+        setMessage('start-label', 'start-time');
+        setMessage('start-now', 'start-time-now');
+        setMessage('start-other', 'start-time-other');
 
         setMessage('duration-label', 'duration');
         setMessage('duration-1h');
