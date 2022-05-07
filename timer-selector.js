@@ -64,6 +64,7 @@ function getMessage(language, messageKey) {
       'message-ban-progress': 'This user\'s ban will elapse in',
       'message-ban-finished': 'This user\'s ban has been expired since',
       'build-timer': 'Build timer',
+      'info-source': 'source',
       'error-missing': 'Please make a selection in each section first.',
       'error-invalid': 'Invalid internal state, please file a bug report.',
     },
@@ -108,6 +109,7 @@ function getMessage(language, messageKey) {
       'message-ban-progress': 'Isthay user\'syay anbay illway elapseyay inyay',
       'message-ban-finished': 'Isthay user\'syay anbay ashay eenbay expiredyay incesay',
       'build-timer': 'Uildbay imertay',
+      'info-source': 'ourcesay',
       'error-missing': 'Easeplay akemay ayay electionsay inyay eachyay ectionsay irstfay.',
       'error-invalid': 'Invalidyay internalyay atestay, easeplay ilefay ayay ugbay eportray.',
     },
@@ -333,6 +335,7 @@ function initializeMessages(language) {
   document.getElementById('custom-css').placeholder = '#title {\n  color: #008080;\n}';
 
   setMessage('build', 'build-timer');
+  setMessage('info-source');
 
   // Set initial "later" date, as an example. Current date plus six months.
   var now = new Date().getTime();

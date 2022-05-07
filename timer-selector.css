@@ -27,6 +27,10 @@ fieldset {
   margin: 0.4em;
 }
 
+.info {
+  font-size: 0.8em;
+}
+
 /* Basic utility classes */
 .hidden {
   display: none;
