@@ -1,0 +1,47 @@
+/* Main elements */
+body {
+  font-family: Arial, sans-serif;
+}
+
+fieldset {
+  margin: 0.2em;
+}
+
+.radio-text {
+  margin-left: 0.2em;
+}
+
+.text {
+  margin-top: 0.2em;
+}
+
+.text input {
+  width: 50%;
+}
+
+.text-short input {
+  width: 25%;
+}
+
+#build {
+  margin: 0.4em;
+}
+
+/* Basic utility classes */
+.hidden {
+  display: none;
+}
+
+#error {
+  text-align: center;
+  color: #b01;
+}
+
+.error-secondary {
+  font-size: 0.6em;
+}
+
+#output {
+  font-family: 'Droid Sans Mono', 'DejaVu Sans Mono', monospace;
+  margin: 0.25em;
+}

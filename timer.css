@@ -1,0 +1,54 @@
+/* Main elements */
+body {
+  font-family: Arial, sans-serif;
+}
+
+#title {
+  text-align: center;
+}
+
+#clock {
+  text-align: center;
+  background-color: #eee;
+  border-radius: 0.25em;
+  padding: 1em;
+  margin: 1em;
+}
+
+.unit {
+  display: inline-block;
+  margin: 0.5em;
+}
+
+.unit-value {
+  font-family: 'Droid Sans Mono', 'DejaVu Sans Mono', monospace;
+  font-size: 2em;
+  background-color: #ccc;
+  border-radius: 0.25em;
+  padding: 0.15em;
+}
+
+.unit-label {
+  font-size: 1em;
+}
+
+/* Basic utility classes */
+.hidden {
+  display: none;
+}
+
+.error {
+  color: #b01;
+}
+
+.error-secondary {
+  font-size: 0.6em;
+}
+
+.progress {
+  color: black;
+}
+
+.finished {
+  color: #282;
+}
