@@ -42,16 +42,16 @@
       <legend id="timer-type-label"></legend>
 
       <!-- Generic -->
-      <input type="radio" name="timer-type" value="generic" checked>
-      <label id="timer-type-generic" for="timer-type"></label>
+      <input id="timer-type-generic" type="radio" name="timer-type" value="generic" checked>
+      <label id="timer-type-generic-label" for="timer-type"></label>
 
       <!-- Deletion -->
-      <input type="radio" name="timer-type" value="deletion">
-      <label id="timer-type-deletion" for="timer-type"></label>
+      <input id="timer-type-deletion" type="radio" name="timer-type" value="deletion">
+      <label id="timer-type-deletion-label" for="timer-type"></label>
 
       <!-- Ban -->
-      <input type="radio" name="timer-type" value="ban">
-      <label id="timer-type-ban" for="timer-type"></label>
+      <input id="timer-type-ban" type="radio" name="timer-type" value="ban">
+      <label id="timer-type-ban-label" for="timer-type"></label>
     </fieldset>
 
     <div id="timer-text">
@@ -61,41 +61,50 @@
       <legend id="start-label"></legend>
 
       <!-- now -->
-      <input type="radio" name="start" value="now" checked>
-      <label id="start-now" for="now"></label>
+      <input id="start-now" type="radio" name="start" value="now" checked>
+      <label id="start-now-label" for="now"></label>
 
       <!-- later / other time -->
-      <input type="radio" name="start" value="later">
-      <label id="start-later" for="later"></label>
-      <input type="text" id="start-later-value" size="10"></input>
+      <input id="start-later" type="radio" name="start" value="later">
+      <label id="start-later-label" for="later"></label>
+      <input id="start-later-value" type="text" size="10"></input>
     </fieldset>
 
     <fieldset id="duration">
       <legend id="duration-label"></legend>
 
       <!-- 1 hour -->
-      <input type="radio" name="duration" value="3600000">
-      <label id="duration-1h" for="3600000"></label>
+      <input id="duration-1h" type="radio" name="duration" value="3600000">
+      <label id="duration-1h-label" for="3600000"></label>
 
       <!-- 1 day -->
-      <input type="radio" name="duration" value="86400000">
-      <label id="duration-1d" for="86400000"></label>
+      <input id="duration-1d" type="radio" name="duration" value="86400000">
+      <label id="duration-1d-label" for="86400000"></label>
 
       <!-- 2 days -->
-      <input type="radio" name="duration" value="172800000">
-      <label id="duration-2d" for="172800000"></label>
+      <input id="duration-2d" type="radio" name="duration" value="172800000">
+      <label id="duration-2d-label" for="172800000"></label>
 
       <!-- 1 week -->
-      <input type="radio" name="duration" value="604800000">
-      <label id="duration-1w" for="604800000"></label>
+      <input id="duration-1w" type="radio" name="duration" value="604800000">
+      <label id="duration-1w-label" for="604800000"></label>
 
       <!-- 2 weeks -->
-      <input type="radio" name="duration" value="1209600000">
-      <label id="duration-2w" for="1209600000"></label>
+      <input id="duration-2w" type="radio" name="duration" value="1209600000">
+      <label id="duration-2w-label" for="1209600000"></label>
+
+      <!-- 4 weeks -->
+      <input id="duration-4w" type="radio" name="duration" value="2419200000">
+      <label id="duration-4w-label" for="2419200000"></label>
 
       <!-- 1 year -->
-      <input type="radio" name="duration" value="31536000000">
-      <label id="duration-1y" for="31536000000"></label>
+      <input id="duration-1y" type="radio" name="duration" value="31536000000">
+      <label id="duration-1y-label" for="31536000000"></label>
+
+      <!-- custom (days) -->
+      <input id="duration-custom" type="radio" name="duration" value="custom">
+      <label id="duration-custom-label" for="custom"></label>
+      <input id="duration-custom-value" type="number" size="6"></input>
     </fieldset>
 
     <script>
@@ -134,7 +143,9 @@
             'duration-2d': '2 Days',
             'duration-1w': '1 Week',
             'duration-2w': '2 Weeks',
+            'duration-4w': '4 Weeks',
             'duration-1y': '1 Year',
+            'duration-custom': 'Custom (days)',
             'start-time': 'Start Time',
             'start-time-now': 'Now',
             'start-time-later': 'Later',
@@ -210,21 +221,23 @@
         }
 
         setMessage('timer-type-label', 'timer-type');
-        setMessage('timer-type-generic', 'timer-type-generic');
-        setMessage('timer-type-deletion', 'timer-type-deletion');
-        setMessage('timer-type-ban', 'timer-type-ban');
+        setMessage('timer-type-generic-label', 'timer-type-generic');
+        setMessage('timer-type-deletion-label', 'timer-type-deletion');
+        setMessage('timer-type-ban-label', 'timer-type-ban');
 
         setMessage('start-label', 'start-time');
-        setMessage('start-now', 'start-time-now');
-        setMessage('start-later', 'start-time-later');
+        setMessage('start-now-label', 'start-time-now');
+        setMessage('start-later-label', 'start-time-later');
 
         setMessage('duration-label', 'duration');
-        setMessage('duration-1h');
-        setMessage('duration-1d');
-        setMessage('duration-2d');
-        setMessage('duration-1w');
-        setMessage('duration-2w');
-        setMessage('duration-1y');
+        setMessage('duration-1h-label', 'duration-1h');
+        setMessage('duration-1d-label', 'duration-1d');
+        setMessage('duration-2d-label', 'duration-2d');
+        setMessage('duration-1w-label', 'duration-1w');
+        setMessage('duration-2w-label', 'duration-2w');
+        setMessage('duration-4w-label', 'duration-4w');
+        setMessage('duration-1y-label', 'duration-1y');
+        setMessage('duration-custom-label', 'duration-custom');
 
         // Set initial "later" date, as an example. Current date plus six months.
         var now = new Date().getTime();
@@ -233,6 +246,12 @@
         var day = String(later.getDay() + 1).padStart(2, '0');
         var dateValue = later.getFullYear() + '-' + month + '-' + day;
         document.getElementById('start-later-value').value = dateValue;
+      }
+
+      function initializeHooks() {
+        document.getElementById('timer-type-deletion').onclick = function () {
+          document.getElementById('duration-1d').click();
+        };
       }
 
       function setup() {
@@ -254,6 +273,7 @@
         }
 
         initializeMessages(language);
+        initializeHooks();
       }
 
       setup();
