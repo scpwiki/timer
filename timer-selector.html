@@ -26,15 +26,15 @@
         margin-left: 0.2em;
       }
 
-      .message {
+      .text {
         margin-top: 0.2em;
       }
 
-      .message input {
+      .text input {
         width: 50%;
       }
 
-      .message-short input {
+      .text-short input {
         width: 25%;
       }
 
@@ -140,12 +140,12 @@
     <fieldset id="messages">
       <legend id="messages-label"></legend>
 
-      <div class="message">
+      <div class="text">
         <label id="message-progress-label"></label>
         <input id="message-progress" type="text"></input>
       </div>
 
-      <div class="message">
+      <div class="text">
         <label id="message-finished-label"></label>
         <input id="message-finished" type="text"></input>
       </div>
@@ -154,17 +154,17 @@
     <fieldset id="css">
       <legend id="css-label"></legend>
 
-      <div class="message message-short">
-        <label id="width-label"></label>
-        <input id="width" type="text" value="500px"></input>
-      </div>
-
-      <div class="message message-short">
+      <div class="text message-short">
         <label id="height-label"></label>
         <input id="height" type="text" value="250px"></input>
       </div>
 
-      <div class="message">
+      <div class="text message-short">
+        <label id="width-label"></label>
+        <input id="width" type="text" value="500px"></input>
+      </div>
+
+      <div class="text">
         <label id="custom-css-label"></label><br>
         <textarea id="custom-css" cols="60" rows="4"></textarea>
       </div>
@@ -228,8 +228,8 @@
             'message-progress': 'Timer in-progress (optional)',
             'message-finished': 'Timer finished (optional)',
             'css': 'CSS (Advanced)',
-            'width': 'Width',
             'height': 'Height',
+            'width': 'Width',
             'css-extra': 'Custom timer CSS (optional)',
             'build-timer': 'Build timer',
             'error-missing': 'Please make a selection in each section first.',
@@ -292,7 +292,7 @@
         return 'https://scpwiki.github.io/timer/timer.html?' + parameters;
       }
 
-      function buildWikitext(url, height = '250px', width = '500px') {
+      function buildWikitext(url, height, width) {
         return [
           '[[iframe ', url, ' style="width: ', width, '; height: ', height, '; border: 0;"]]',
         ].join('');
@@ -337,6 +337,46 @@
         return value * unit;
       }
 
+      function getTextData(language) {
+        var progressElement = document.getElementById('message-progress');
+        if (progressElement === null) {
+          alert(getMessage(language, 'error-missing'));
+          throw new Error('Missing progress element in getTextData()');
+        }
+
+        var finishedElement = document.getElementById('message-finished');
+        if (finishedElement === null) {
+          alert(getMessage(language, 'error-missing'));
+          throw new Error('Missing finished element in getTextData()');
+        }
+
+        var heightElement = document.getElementById('height');
+        if (heightElement === null) {
+          alert(getMessage(language, 'error-missing'));
+          throw new Error('Missing height element in getTextData()');
+        }
+
+        var widthElement = document.getElementById('width');
+        if (widthElement === null) {
+          alert(getMessage(language, 'error-missing'));
+          throw new Error('Missing width element in getTextData()');
+        }
+
+        var customCssElement = document.getElementById('custom-css');
+        if (customCssElement === null) {
+          alert(getMessage(language, 'error-missing'));
+          throw new Error('Missing custom CSS element in getTextData()');
+        }
+
+        return {
+          progressMessage: progressElement.value,
+          finishedMessage: finishedElement.value,
+          height: heightElement.value,
+          width: widthElement.value,
+          styling: customCssElement.value,
+        };
+      }
+
       function buildTimer(language) {
         // Unhide output
         var outputElement = document.getElementById('output');
@@ -345,21 +385,19 @@
         // Gather values
         var startTimestamp = getStartTimestamp(language);
         var durationMs = getDuration(language);
-        var progressMessage = null;
-        var finishedMessage = null;
-        var styling = null;
+        var data = getTextData(language);
 
         // Build wikitext and output
         var url = buildUrl(
           language,
           startTimestamp,
           durationMs,
-          progressMessage,
-          finishedMessage,
-          styling,
+          data.progressMessage,
+          data.finishedMessage,
+          data.styling,
         );
 
-        outputElement.innerText = buildWikitext(url);
+        outputElement.innerText = buildWikitext(url, data.height, data.width);
       }
 
       // Initialization
@@ -401,9 +439,10 @@
         setMessage('message-finished-label', 'message-finished');
 
         setMessage('css-label', 'css');
-        setMessage('width-label', 'width');
         setMessage('height-label', 'height');
+        setMessage('width-label', 'width');
         setMessage('custom-css-label', 'css-extra');
+        document.getElementById('custom-css').placeholder = '#title {\n  color: #008080;\n}';
 
         setMessage('build', 'build-timer');
 
