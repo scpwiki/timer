@@ -19,66 +19,88 @@
         <legend id="timer-type-label"></legend>
 
         <!-- Generic -->
-        <input id="timer-type-generic" type="radio" name="timer-type" value="generic" checked>
-        <label id="timer-type-generic-label" for="timer-type"></label>
+        <span>
+          <input id="timer-type-generic" type="radio" name="timer-type" value="generic" checked>
+          <label id="timer-type-generic-label" for="timer-type"></label>
+        </span>
 
         <!-- Deletion -->
-        <input id="timer-type-deletion" type="radio" name="timer-type" value="deletion">
-        <label id="timer-type-deletion-label" for="timer-type"></label>
+        <span>
+          <input id="timer-type-deletion" type="radio" name="timer-type" value="deletion">
+          <label id="timer-type-deletion-label" for="timer-type"></label>
+        </span>
 
         <!-- Ban -->
-        <input id="timer-type-ban" type="radio" name="timer-type" value="ban">
-        <label id="timer-type-ban-label" for="timer-type"></label>
+        <span>
+          <input id="timer-type-ban" type="radio" name="timer-type" value="ban">
+          <label id="timer-type-ban-label" for="timer-type"></label>
+        </span>
       </fieldset>
 
       <fieldset id="start">
         <legend id="start-label"></legend>
 
         <!-- now -->
-        <input id="start-now" type="radio" name="start" value="now" checked>
-        <label id="start-now-label" for="now"></label>
+        <span>
+          <input id="start-now" type="radio" name="start" value="now" checked>
+          <label id="start-now-label" for="now"></label>
+        </span>
 
         <!-- later / other time -->
-        <input id="start-later" type="radio" name="start" value="later">
-        <label id="start-later-label" for="later"></label>
-        <input id="start-later-value" class="radio-text" type="text" size="10"></input>
+        <span>
+          <input id="start-later" type="radio" name="start" value="later">
+          <label id="start-later-label" for="later"></label>
+          <input id="start-later-value" class="radio-text" type="text" size="10"></input>
+        </span>
       </fieldset>
 
       <fieldset id="duration">
         <legend id="duration-label"></legend>
 
         <!-- 1 day -->
-        <input id="duration-1d" type="radio" name="duration" value="86400000" checked>
-        <label id="duration-1d-label" for="86400000"></label>
+        <span>
+          <input id="duration-1d" type="radio" name="duration" value="86400000" checked>
+          <label id="duration-1d-label" for="86400000"></label>
+        </span>
 
         <!-- 1 week -->
-        <input id="duration-1w" type="radio" name="duration" value="604800000">
-        <label id="duration-1w-label" for="604800000"></label>
+        <span>
+          <input id="duration-1w" type="radio" name="duration" value="604800000">
+          <label id="duration-1w-label" for="604800000"></label>
+        </span>
 
         <!-- 2 weeks -->
-        <input id="duration-2w" type="radio" name="duration" value="1209600000">
-        <label id="duration-2w-label" for="1209600000"></label>
+        <span>
+          <input id="duration-2w" type="radio" name="duration" value="1209600000">
+          <label id="duration-2w-label" for="1209600000"></label>
+        </span>
 
         <!-- 4 weeks -->
-        <input id="duration-4w" type="radio" name="duration" value="2419200000">
-        <label id="duration-4w-label" for="2419200000"></label>
+        <span>
+          <input id="duration-4w" type="radio" name="duration" value="2419200000">
+          <label id="duration-4w-label" for="2419200000"></label>
+        </span>
 
         <!-- 1 year -->
-        <input id="duration-1y" type="radio" name="duration" value="31536000000">
-        <label id="duration-1y-label" for="31536000000"></label>
+        <span>
+          <input id="duration-1y" type="radio" name="duration" value="31536000000">
+          <label id="duration-1y-label" for="31536000000"></label>
+        </span>
 
         <!-- custom -->
-        <input id="duration-custom" type="radio" name="duration" value="custom">
-        <label id="duration-custom-label" for="custom"></label>
-        <input id="duration-custom-value" class="radio-text" type="number" size="6"></input>
-        <select id="duration-custom-unit">
-          <option id="unit-minute" value="60000"></option>
-          <option id="unit-hour" value="3600000"></option>
-          <option id="unit-day" value="86400000"></option>
-          <option id="unit-week" value="604800000"></option>
-          <option id="unit-month" value="2592000000"></option>
-          <option id="unit-year" value="31536000000"></option>
-        </select>
+        <span>
+          <input id="duration-custom" type="radio" name="duration" value="custom">
+          <label id="duration-custom-label" for="custom"></label>
+          <input id="duration-custom-value" class="radio-text" type="number" size="6"></input>
+          <select id="duration-custom-unit">
+            <option id="unit-minute" value="60000"></option>
+            <option id="unit-hour" value="3600000"></option>
+            <option id="unit-day" value="86400000"></option>
+            <option id="unit-week" value="604800000"></option>
+            <option id="unit-month" value="2592000000"></option>
+            <option id="unit-year" value="31536000000"></option>
+          </select>
+        </span>
       </fieldset>
 
       <fieldset id="messages">
