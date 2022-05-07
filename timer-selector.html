@@ -348,13 +348,20 @@
           .replace('%%iframe%%', iframe);
       }
 
-      function getStartTimestamp(language) {
-        var element = document.querySelector('#start input[checked]');
-        if (element === null) {
-          alert(getMessage(language, 'error-missing'));
-          throw new Error('Missing element in getStartTimestamp()');
+      function findCheckedItem(selector) {
+        var elements = document.querySelectorAll(selector);
+        for (var i = 0; i < elements.length; i++) {
+          if (elements[i].checked) {
+            return elements[i];
+          }
         }
 
+        alert(getMessage(language, 'error-missing'));
+        throw new Error('Missing element in getStartTimestamp()');
+      }
+
+      function getStartTimestamp(language) {
+        var element = findCheckedItem('#start input');
         switch (element.id) {
           case 'start-now':
             return new Date().getTime();
@@ -368,12 +375,7 @@
       }
 
       function getDuration() {
-        var element = document.querySelector('#duration input[checked]');
-        if (element === null) {
-          alert(getMessage(language, 'error-missing'));
-          throw new Error('Missing element in getDuration()');
-        }
-
+        var element = findCheckedItem('#duration input');
         if (element.value !== 'custom') {
           return parseInt(element.value);
         }
