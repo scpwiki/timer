@@ -384,7 +384,7 @@ function setup() {
 
   // Insert custom CSS, if any
   if (styling !== null) {
-    insertCSS(style);
+    insertCSS(styling);
   }
 
   initializeMessages(language);
