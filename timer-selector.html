@@ -21,8 +21,7 @@
         margin: 0.2em;
       }
 
-      input[type=text],
-      input[type=number] {
+      .radio-text {
         margin-left: 0.2em;
       }
 
@@ -39,7 +38,7 @@
       }
 
       #build {
-        margin: 0.4em;
+        margin: 0.4em auto 0.4em auto;
       }
 
       /* Basic utility classes */
@@ -84,9 +83,6 @@
       <label id="timer-type-ban-label" for="timer-type"></label>
     </fieldset>
 
-    <div id="timer-text">
-    </div>
-
     <fieldset id="start">
       <legend id="start-label"></legend>
 
@@ -97,7 +93,7 @@
       <!-- later / other time -->
       <input id="start-later" type="radio" name="start" value="later">
       <label id="start-later-label" for="later"></label>
-      <input id="start-later-value" type="text" size="10"></input>
+      <input id="start-later-value" class="radio-text" type="text" size="10"></input>
     </fieldset>
 
     <fieldset id="duration">
@@ -126,7 +122,7 @@
       <!-- custom -->
       <input id="duration-custom" type="radio" name="duration" value="custom">
       <label id="duration-custom-label" for="custom"></label>
-      <input id="duration-custom-value" type="number" size="6"></input>
+      <input id="duration-custom-value" class="radio-text" type="number" size="6"></input>
       <select id="duration-custom-unit">
         <option id="unit-minute" value="60"></option>
         <option id="unit-hour" value="3600"></option>
@@ -151,8 +147,8 @@
       </div>
     </fieldset>
 
-    <fieldset id="css">
-      <legend id="css-label"></legend>
+    <fieldset id="advanced">
+      <legend id="advanced-label"></legend>
 
       <div class="text message-short">
         <label id="height-label"></label>
@@ -167,6 +163,11 @@
       <div class="text">
         <label id="custom-css-label"></label><br>
         <textarea id="custom-css" cols="60" rows="4"></textarea>
+      </div>
+
+      <div class="text">
+        <label id="template-label"></label><br>
+        <textarea id="template" cols="60" rows="4">%%wikitext%%</textarea>
       </div>
     </fieldset>
 
@@ -227,10 +228,11 @@
             'messages': 'Messages',
             'message-progress': 'Timer in-progress (optional)',
             'message-finished': 'Timer finished (optional)',
-            'css': 'CSS (Advanced)',
+            'advanced-section': 'Advanced',
             'height': 'Height',
             'width': 'Width',
             'css-extra': 'Custom timer CSS (optional)',
+            'template': 'Output template (optional)',
             'build-timer': 'Build timer',
             'error-missing': 'Please make a selection in each section first.',
             'error-invalid': 'Invalid internal state, please file a bug report.',
@@ -438,10 +440,11 @@
         setMessage('message-progress-label', 'message-progress');
         setMessage('message-finished-label', 'message-finished');
 
-        setMessage('css-label', 'css');
+        setMessage('advanced-label', 'advanced-section');
         setMessage('height-label', 'height');
         setMessage('width-label', 'width');
         setMessage('custom-css-label', 'css-extra');
+        setMessage('template-label', 'template');
         document.getElementById('custom-css').placeholder = '#title {\n  color: #008080;\n}';
 
         setMessage('build', 'build-timer');
