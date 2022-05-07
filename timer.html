@@ -335,8 +335,7 @@
         }
       }
 
-      function createTimer(language, timestamp, progressMessage, finishedMessage) {
-        var targetTime = new Date(timestamp);
+      function createTimer(language, targetTime, progressMessage, finishedMessage) {
         progressMessage = progressMessage || getMessage(language, 'timer-progress');
         finishedMessage = finishedMessage || getMessage(language, 'timer-finished');
 
@@ -416,12 +415,13 @@
           return;
         }
 
+        var targetTime;
         if (/^\d+(\.\d+)?$/.exec(timestamp)) {
-          timestamp = parseFloat(timestamp) * 1000;
+          targetTime = new Date(parseFloat(timestamp) * 1000);
         } else {
-          timestamp = Date.parse(timestamp);
+          targetTime = new Date(timestamp);
           if (isNaN(timestamp)) {
-            setError('Invalid timestamp');
+            setError('Invalid timestamp', timestamp);
             return;
           }
         }
@@ -432,7 +432,7 @@
         }
 
         // Initialize clock
-        createTimer(language, timestamp, progressMessage, finishedMessage);
+        createTimer(language, targetTime, progressMessage, finishedMessage);
       }
 
       setup();

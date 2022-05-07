@@ -377,6 +377,7 @@
       function getDuration() {
         var element = findCheckedItem('#duration input');
         if (element.value !== 'custom') {
+          console.log('number', element.value);
           return parseInt(element.value);
         }
 
@@ -385,6 +386,7 @@
 
         var unitElement = document.getElementById('duration-custom-unit');
         var unit = parseInt(unitElement.value);
+        console.log('custom', value, unit);
 
         return value * unit;
       }
