@@ -39,6 +39,11 @@
       .error-secondary {
         font-size: 0.6em;
       }
+
+      #output {
+        font-family: 'Droid Sans Mono', 'DejaVu Sans Mono', monospace;
+        margin: 0.25em;
+      }
     </style>
   </head>
 
@@ -119,7 +124,7 @@
     <!-- output -->
     <button id="build"></button>
 
-    <textarea id="output" class="hidden" rows="1" cols="80" readonly></textarea>
+    <div><textarea id="output" class="hidden" cols="60" rows="4" readonly></textarea></div>
 
     <script>
       // Constants
@@ -234,6 +239,10 @@
       }
 
       function buildTimer(language) {
+        // Unhide output
+        var outputElement = document.getElementById('output');
+        outputElement.classList.remove('hidden');
+
         // TODO
       }
 
