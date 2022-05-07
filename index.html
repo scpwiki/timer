@@ -76,5 +76,30 @@
         <tt>style</tt> &mdash; Custom CSS to inject into the document to style the timer.
       </li>
     </ul>
+
+    <p>
+      <strong>Template Variables:</strong>
+    </p>
+
+    <p>
+      In the "advanced" section, the output can be customized by setting a template.
+      For instance, each outputted timer can have copy afterwards explaining procedure,
+      or a link to some policy page.
+    </p>
+
+    <p>
+      Variables are substituted as part of the wikitext generation process.
+      The supported values are as follows:
+    </p>
+
+    <ul>
+      <li>
+        <tt>%%url%%</tt> &mdash; The timer URL, with all query parameters.
+      </li>
+
+      <li>
+        <tt>%%iframe%%</tt> &mdash; The Wikidot <tt>[[iframe]]</tt> block, with any styling.
+      </li>
+    </ul>
   </body>
 </html>
