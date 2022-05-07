@@ -102,10 +102,18 @@
       <input id="duration-1y" type="radio" name="duration" value="31536000000">
       <label id="duration-1y-label" for="31536000000"></label>
 
-      <!-- custom (days) -->
+      <!-- custom -->
       <input id="duration-custom" type="radio" name="duration" value="custom">
       <label id="duration-custom-label" for="custom"></label>
       <input id="duration-custom-value" type="number" size="6"></input>
+      <select id="duration-custom-unit">
+        <option id="unit-minute" value="60"></option>
+        <option id="unit-hour" value="3600"></option>
+        <option id="unit-day" value="86400"></option>
+        <option id="unit-week" value="604800"></option>
+        <option id="unit-month" value="2592000"></option>
+        <option id="unit-year" value="31536000"></option>
+      </select>
     </fieldset>
 
     <script>
@@ -145,7 +153,13 @@
             'duration-2w': '2 Weeks',
             'duration-4w': '4 Weeks',
             'duration-1y': '1 Year',
-            'duration-custom': 'Custom (days)',
+            'duration-custom': 'Custom',
+            'unit-minute': 'minutes',
+            'unit-hour': 'hours',
+            'unit-day': 'days',
+            'unit-week': 'weeks',
+            'unit-month': 'months',
+            'unit-year': 'years',
             'start-time': 'Start Time',
             'start-time-now': 'Now',
             'start-time-later': 'Later',
@@ -237,6 +251,13 @@
         setMessage('duration-4w-label', 'duration-4w');
         setMessage('duration-1y-label', 'duration-1y');
         setMessage('duration-custom-label', 'duration-custom');
+
+        setMessage('unit-minute');
+        setMessage('unit-hour');
+        setMessage('unit-day');
+        setMessage('unit-week');
+        setMessage('unit-month');
+        setMessage('unit-year');
 
         // Set initial "later" date, as an example. Current date plus six months.
         var now = new Date().getTime();
