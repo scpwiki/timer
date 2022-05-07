@@ -37,7 +37,6 @@ function getMessage(language, messageKey) {
       'duration-1d': '1 Day',
       'duration-1w': '1 Week',
       'duration-2w': '2 Weeks',
-      'duration-4w': '4 Weeks',
       'duration-1y': '1 Year',
       'duration-custom': 'Custom',
       'unit-minute': 'minutes',
@@ -82,7 +81,6 @@ function getMessage(language, messageKey) {
       'duration-1d': '1 Aday',
       'duration-1w': '1 Eekway',
       'duration-2w': '2 Eeksway',
-      'duration-4w': '4 Eeksway',
       'duration-1y': '1 Earyay',
       'duration-custom': 'Ustomcay',
       'unit-minute': 'inutesmay',
@@ -317,7 +315,6 @@ function initializeMessages(language) {
   setMessage('duration-1d-label', 'duration-1d');
   setMessage('duration-1w-label', 'duration-1w');
   setMessage('duration-2w-label', 'duration-2w');
-  setMessage('duration-4w-label', 'duration-4w');
   setMessage('duration-1y-label', 'duration-1y');
   setMessage('duration-custom-label', 'duration-custom');
 
@@ -368,7 +365,6 @@ function initializeHooks(language) {
   };
 
   document.getElementById('timer-type-ban').onclick = function () {
-    document.getElementById('duration-4w').click();
     document.getElementById('message-progress').value = getMessage(language, 'message-ban-progress');
     document.getElementById('message-finished').value = getMessage(language, 'message-ban-finished');
     document.getElementById('template').value = getMessage(language, 'template-ban');
