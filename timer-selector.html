@@ -167,7 +167,7 @@
 
       <div class="text">
         <label id="template-label"></label><br>
-        <textarea id="template" cols="60" rows="4">%%wikitext%%</textarea>
+        <textarea id="template" cols="60" rows="4">%%iframe%%</textarea>
       </div>
     </fieldset>
 
@@ -232,7 +232,7 @@
             'height': 'Height',
             'width': 'Width',
             'css-extra': 'Custom timer CSS (optional)',
-            'template': 'Output template (optional)',
+            'template': 'Output template',
             'build-timer': 'Build timer',
             'error-missing': 'Please make a selection in each section first.',
             'error-invalid': 'Invalid internal state, please file a bug report.',
@@ -294,10 +294,14 @@
         return 'https://scpwiki.github.io/timer/timer.html?' + parameters;
       }
 
-      function buildWikitext(url, height, width) {
-        return [
+      function buildWikitext(template, url, height, width) {
+        var iframe = [
           '[[iframe ', url, ' style="width: ', width, '; height: ', height, '; border: 0;"]]',
         ].join('');
+
+        return template
+          .replace('%%url%%', url)
+          .replace('%%iframe%%', iframe);
       }
 
       function getStartTimestamp(language) {
@@ -370,12 +374,19 @@
           throw new Error('Missing custom CSS element in getTextData()');
         }
 
+        var templateElement = document.getElementById('template');
+        if (templateElement === null) {
+          alert(getMessage(language, 'error-missing'));
+          throw new Error('Missing template element in getTextData()');
+        }
+
         return {
           progressMessage: progressElement.value,
           finishedMessage: finishedElement.value,
           height: heightElement.value,
           width: widthElement.value,
           styling: customCssElement.value,
+          template: templateElement.value,
         };
       }
 
@@ -399,7 +410,7 @@
           data.styling,
         );
 
-        outputElement.innerText = buildWikitext(url, data.height, data.width);
+        outputElement.innerText = buildWikitext(data.template, url, data.height, data.width);
       }
 
       // Initialization
