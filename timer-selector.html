@@ -9,16 +9,139 @@
 
     <style>
       /* TODO */
+
+      /* Basic utility classes */
+      .hidden {
+        display: none;
+      }
+
+      #error {
+        color: #b01;
+      }
     </style>
   </head>
 
   <body>
     <noscript>This application requires Javascript to function.</noscript>
 
-    <div></div>
+    <div id="error" class="hidden"></div>
+
+    <div id="timer-type">
+    </div>
+
+    <div id="timer-text">
+    </div>
+
+    <div id="timer-start-date">
+    </div>
+
+    <fieldset id="timer-duration">
+      <legend id="timer-duration-label">
+    </fieldset>
 
     <script>
+      // Errors are only in English unfortunately
+      function setError(primary, secondary = null) {
+        var errorElement = document.getElementById('error');
+        errorElement.classList.remove('hidden');
+        errorElement.innerText = primary;
+
+        if (secondary) {
+          var secondaryErrorElement = document.createElement('div');
+          secondaryErrorElement.innerText = secondary;
+          errorElement.appendChild(secondaryErrorElement);
+        }
+      }
+
+      // Localization
+      function getMessage(language, messageKey) {
+        var translations = {
+          // English
+          'en': {
+            'timer-description': 'Timer expiring at',
+            // TODO
+          },
+
+          // Pig Latin
+          'pig': {
+            'timer-description': 'Imertay expiringyay atyay',
+          },
+        };
+
+        var messages = translations[language];
+        if (!messages) {
+          setError('No translations for language: ' + language);
+          return null;
+        }
+
+        var message = messages[messageKey];
+        if (!message) {
+          setError('No such message key: ' + messageKey);
+          return null;
+        }
+
+        return message;
+      }
+
+      function insertCSS(styling) {
+        var head = document.head || document.getElementsByTagName('head')[0];
+        var style = document.createElement('style');
+
+        style.type = 'text/css';
+        style.appendChild(document.createTextNode(styling));
+        head.appendChild(style);
+      }
+
+      // Timer creation
+      function buildUrl(language, startDate, durationMs, progressMessage, finishedMessage, styling) {
+        // Calculate target datetime
+        var targetTimestamp = (startDate || new Date()) + durationMs;
+        var targetDate = new Date(targetTimestamp);
+
+        // Finally, build URL
+        var parameters = new URLSearchParams();
+        parameters.append('lang', language);
+        parameters.append('time', targetDate.toISOString());
+
+        if (progressMessage) {
+          parameters.append('progress', progressMessage);
+        }
+
+        if (finishedMessage) {
+          parameters.append('finished', finishedMessage);
+        }
+
+        if (styling) {
+          parameters.append('style', styling);
+        }
+
+        return 'https://scpwiki.github.io/timer/timer.html?' + parameters;
+      }
+
+      function buildWikitext(url, height = '250px', width = '500px') {
+        return [
+          '[[iframe ', url, ' style="width: ', width, '; height: ', height, '; border: 0;"]]',
+        ].join('');
+      }
+
       function setup() {
+        // Get parameters
+        var url = new URL(window.location.href);
+        var parameters = new URLSearchParams(url.search);
+        var language = parameters.get('lang');
+        var style = parameters.get('style');
+
+        // Check parameters
+        if (!language) {
+          setError('No language set', 'Parameter is "lang". Use "en" for English.');
+          return;
+        }
+
+        // Insert custom CSS, if any
+        if (styling !== null) {
+          insertCSS(style);
+        }
+
         // TODO
       }
 
