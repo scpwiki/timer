@@ -10,6 +10,9 @@ function setError(primary, secondary = null) {
   errorElement.classList.remove('hidden');
   errorElement.innerText = primary;
 
+  var formElement = document.getElementById('form');
+  formElement.classList.add('hidden');
+
   if (secondary) {
     var secondaryErrorElement = document.createElement('div');
     secondaryErrorElement.classList = ['error-secondary'];
