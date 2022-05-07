@@ -420,7 +420,7 @@
           targetTime = new Date(parseFloat(timestamp) * 1000);
         } else {
           targetTime = new Date(timestamp);
-          if (isNaN(timestamp)) {
+          if (isNaN(targetTime)) {
             setError('Invalid timestamp', timestamp);
             return;
           }
