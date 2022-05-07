@@ -370,6 +370,13 @@ function initializeHooks(language) {
     document.getElementById('template').value = getMessage(language, 'template-ban');
   };
 
+  function onClickCustom() {
+    document.getElementById('duration-custom').click();
+  }
+
+  document.getElementById('duration-custom-value').onclick = onClickCustom;
+  document.getElementById('duration-custom-unit').onclick = onClickCustom;
+
   document.getElementById('build').onclick = function () {
     buildTimer(language);
   };
