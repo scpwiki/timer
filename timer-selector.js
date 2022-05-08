@@ -199,8 +199,14 @@ function getStartDate(language) {
     case 'start-now':
       return new Date();
     case 'start-later':
-      element = document.getElementById('start-later-value');
-      return new Date(element.value);
+      var dateElement = document.getElementById('start-later-date');
+      var timeElement = document.getElementById('start-later-time');
+      if (dateElement === null || timeElement === null) {
+        alert(getMessage(language, 'error-missing'));
+        throw new Error('Missing date or time element in getStartDate()');
+      }
+
+      return new Date(dateElement.value + ' ' + timeElement.value);
     default:
       alert(getMessage(language, 'error-invalid'));
       throw new Error('Invalid element ID in getStartDate()');
