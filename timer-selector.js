@@ -343,14 +343,6 @@ function initializeMessages(language) {
   setMessage('build', 'build-timer');
   setMessage('info-help');
   setMessage('info-source');
-
-  // Set initial "later" date, as an example. Current date plus six months.
-  var now = new Date().getTime();
-  var later = new Date(now + 6 * 30 * DAYS_MS);
-  var month = String(later.getMonth() + 1).padStart(2, '0');
-  var day = String(later.getDay() + 1).padStart(2, '0');
-  var dateValue = later.getFullYear() + '-' + month + '-' + day;
-  document.getElementById('start-later-value').value = dateValue;
 }
 
 function initializeHooks(language) {
