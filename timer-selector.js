@@ -371,6 +371,13 @@ function initializeHooks(language) {
     document.getElementById('template').value = getMessage(language, 'template-ban');
   };
 
+  function onClickStartDate() {
+    document.getElementById('start-later').click();
+  }
+
+  document.getElementById('start-later-date').onclick = onClickStartDate;
+  document.getElementById('start-later-time').onclick = onClickStartDate;
+
   function onClickCustom() {
     document.getElementById('duration-custom').click();
   }
