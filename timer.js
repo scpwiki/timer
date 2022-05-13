@@ -44,6 +44,19 @@ function getMessage(language, messageKey) {
       'seconds': 'seconds',
     },
 
+    // French
+    'fr': {
+      'timer-description': 'Fin du compte à rebours à',
+      'timer-progress': 'Ce compte à rebours se terminera dans',
+      'timer-finished': 'Ce compte à rebous est terminé depuis',
+      'years': 'ans',
+      'months': 'mois',
+      'days': 'jours',
+      'hours': 'heures',
+      'minutes': 'minutes',
+      'seconds': 'secondes',
+    },
+    
     // Pig Latin
     'pig': {
       'timer-description': 'Imertay expiringyay atyay',
