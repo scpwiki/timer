@@ -69,6 +69,19 @@ function getMessage(language, messageKey) {
       'minutes': 'inutesmay',
       'seconds': 'econdssay',
     },
+
+    // Spanish
+    'es': {
+      'timer-description': 'El temporizador finaliza en',
+      'timer-progress': 'El temporizador finalizará en',
+      'timer-finished': 'El temporizador ha finalizado desde hace',
+      'years': 'años',
+      'months': 'meses',
+      'days': 'días',
+      'hours': 'horas',
+      'minutes': 'minutos',
+      'seconds': 'segundos',
+    },
   };
 
   // Special case:
