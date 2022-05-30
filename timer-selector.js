@@ -191,7 +191,7 @@ function getMessage(language, messageKey) {
       'width': 'Ancho',
       'css-extra': 'CSS personalizado del temporizador (opcional)',
       'template': 'Modelo de salida',
-      'template-deletion': 'Comienzo de la eliminación en -3.\n\n%%iframe%%\n\nSi no eres el autor y desea reescribir este artículo, puede responder a este post solicitando la oportunidad de hacerlo. Obtenga permiso del autor (o de la administración si este artículo tiene más de 6 meses) y asegúrese de copiar el código fuente del artículo en su borrador. Por favor, __no__ responda a este post por cualquier otra razón a menos que seas parte del Staff.**',
+      'template-deletion': 'Comienzo de la eliminación en -3.\n\n%%iframe%%\n\nSi no eres el autor y desea reescribir este artículo, puede responder a este post solicitando la oportunidad de hacerlo. Obtenga permiso del autor (o de la administración si este artículo tiene más de 6 meses) y asegúrese de copiar el código fuente del artículo en su borrador. **Por favor, __no__ responda a este post por cualquier otra razón a menos que seas parte del Staff.**',
       'template-ban': '%%iframe%%',
       'message-deletion-progress': 'Esta página podrá ser eliminada en',
       'message-deletion-finished': 'Esta página puede ser eliminada desde',
