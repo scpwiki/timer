@@ -68,7 +68,7 @@ function getMessage(language, messageKey) {
       'error-missing': 'Please make a selection in each section first.',
       'error-invalid': 'Invalid internal state, please file a bug report.',
     },
-    
+
     // French
     'fr': {
       'timer-description': 'Fin du compte à rebours à',
