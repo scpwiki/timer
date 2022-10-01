@@ -70,7 +70,6 @@ function getMessage(language, messageKey) {
       'seconds': 'econdssay',
     },
 
-
     // Spanish
     'es': {
       'timer-description': 'El temporizador finaliza en',
