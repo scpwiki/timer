@@ -70,17 +70,17 @@ function getMessage(language, messageKey) {
       'seconds': 'econdssay',
     },
 
-    // Spanish
-    'es': {
-      'timer-description': 'El temporizador finaliza en',
-      'timer-progress': 'El temporizador finalizará en',
-      'timer-finished': 'El temporizador ha finalizado desde hace',
-      'years': 'años',
-      'months': 'meses',
-      'days': 'días',
-      'hours': 'horas',
-      'minutes': 'minutos',
-      'seconds': 'segundos',
+    // Vietnamese
+    'vi': {
+      'timer-description': 'Đồng hồ kết thúc vào',
+      'timer-progress': 'Đồng hồ sẽ kết thúc trong',
+      'timer-finished': 'Đồng hồ này đã kết thúc kể từ',
+      'years': 'năm',
+      'months': 'tháng',
+      'days': 'ngày',
+      'hours': 'giờ',
+      'minutes': 'phút',
+      'seconds': 'giây',
     },
   };
 
