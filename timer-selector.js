@@ -208,7 +208,7 @@ function getMessage(language, messageKey) {
     'vi': {
       'timer-description': 'Đồng hồ kết thúc vào',
       'timer-progress': 'Đồng hồ sẽ kết thúc trong',
-      'timer-finished': 'Đồng hồ này đã kết thúc được',
+      'timer-finished': 'Đồng hồ này đã kết thúc kể từ',
       'timer-type': 'Loại Đồng Hồ',
       'timer-type-generic': 'Chung',
       'timer-type-deletion': 'Xóa Bài',
