@@ -82,6 +82,19 @@ function getMessage(language, messageKey) {
       'minutes': 'minutos',
       'seconds': 'segundos',
     },
+    
+    // Vietnamese
+    'vi': {
+      'timer-description': 'Đồng hồ kết thúc vào',
+      'timer-progress': 'Đồng hồ sẽ kết thúc trong',
+      'timer-finished': 'Đồng hồ này đã kết thúc kể từ',
+      'years': 'năm',
+      'months': 'tháng',
+      'days': 'ngày',
+      'hours': 'giờ',
+      'minutes': 'phút',
+      'seconds': 'giây',
+    },
   };
 
   // Special case:
