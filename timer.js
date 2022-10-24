@@ -96,7 +96,7 @@ function getMessage(language, messageKey) {
       'seconds': 'giây',
     },
     
-    // Chinase
+    // Simplified Chinese
     'zh': {
       'timer-description': '此计时器将到期于：',
       'timer-progress': '此计时器将在下列时间后过期：',
