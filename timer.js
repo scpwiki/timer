@@ -103,7 +103,7 @@ function getMessage(language, messageKey) {
       'timer-finished': '此计时器已过期：',
       'years': '年',
       'months': '月',
-      'days': '天',
+      'days': '日',
       'hours': '时',
       'minutes': '分',
       'seconds': '秒',
