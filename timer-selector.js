@@ -278,7 +278,7 @@ function getMessage(language, messageKey) {
       'advanced-section': '高级设置',
       'height': '高度',
       'width': '宽度',
-      'css-extra': '自定义计时器的CSS（可选）',
+      'css-extra': '自定计时器样式（可选）',
       'template': '输出模板',
       'template-deletion': '由于条目的分数为-X分，现根据[[[deletions-guide|删帖指导]]]，宣告将删除此页：\n\n%%iframe%%\n\n**如果你不是作者又想要重写该条目，请在此帖回复申请。请先取得作者（或管理员，如果此文档搬运自聊天室的话）的同意，并将原文的源代码复制至沙盒里。除非你是工作人员，否则请勿就申请重写以外的范围回复此帖。**',
       'template-ban': '%%iframe%%',
