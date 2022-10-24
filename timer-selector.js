@@ -265,7 +265,7 @@ function getMessage(language, messageKey) {
       'duration-custom': '自定义',
       'unit-minute': '分钟',
       'unit-hour': '小时',
-      'unit-day': '天',
+      'unit-day': '日',
       'unit-week': '周',
       'unit-month': '月',
       'unit-year': '年',
