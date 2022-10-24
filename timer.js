@@ -97,7 +97,7 @@ function getMessage(language, messageKey) {
     },
     
     // Simplified Chinese
-    'zh': {
+    'cn': {
       'timer-description': '此计时器将到期于：',
       'timer-progress': '此计时器将在下列时间后过期：',
       'timer-finished': '此计时器已过期：',
