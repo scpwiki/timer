@@ -258,7 +258,7 @@ function getMessage(language, messageKey) {
       'timer-type-deletion': '删除',
       'timer-type-ban': '封禁',
       'duration': '运行时间',
-      'duration-1d': '1天',
+      'duration-1d': '1日',
       'duration-1w': '1周',
       'duration-2w': '2周',
       'duration-1y': '1年',
