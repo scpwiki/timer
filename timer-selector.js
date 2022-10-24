@@ -275,7 +275,7 @@ function getMessage(language, messageKey) {
       'messages': '通知内容',
       'message-progress': '此计时器运行中（可选）',
       'message-finished': '此计时器已到期（可选）',
-      'advanced-section': 'Advanced',
+      'advanced-section': '高级设置',
       'height': '高度',
       'width': '宽度',
       'css-extra': '自定义计时器的CSS（可选）',
