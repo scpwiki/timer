@@ -248,8 +248,8 @@ function getMessage(language, messageKey) {
       'error-missing': 'Hãy chọn đầy đủ các tùy chọn bắt buộc',
       'error-invalid': 'Lỗi phần mềm, vui lòng gửi báo cáo lỗi.',
     },
-    // Chinase
-    'zh': {
+    // Simplified Chinese
+    'cn': {
       'timer-description': '此计时器将到期于：',
       'timer-progress': '此计时器将在下列时间后过期：',
       'timer-finished': '此计时器已过期：',
