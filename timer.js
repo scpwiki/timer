@@ -95,6 +95,19 @@ function getMessage(language, messageKey) {
       'minutes': 'phút',
       'seconds': 'giây',
     },
+    
+    // Simplified Chinese
+    'cn': {
+      'timer-description': '此计时器将到期于：',
+      'timer-progress': '此计时器将在下列时间后过期：',
+      'timer-finished': '此计时器已过期：',
+      'years': '年',
+      'months': '月',
+      'days': '日',
+      'hours': '时',
+      'minutes': '分',
+      'seconds': '秒',
+    },
   };
 
   // Special case:
