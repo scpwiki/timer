@@ -250,8 +250,8 @@ function getMessage(language, messageKey) {
     },
     // Simplified Chinese
     'cn': {
-      'timer-description': '此计时器将到期于：',
-      'timer-progress': '此计时器将在下列时间后过期：',
+      'timer-description': '此计时器将过期于：',
+      'timer-progress': '此计时器将过期于：',
       'timer-finished': '此计时器已过期：',
       'timer-type': '计时器类型',
       'timer-type-generic': '通用',
