@@ -31,6 +31,10 @@ fieldset {
   font-size: 0.8em;
 }
 
+#custom-css,#template,#output {
+  width: 79.2%;
+}
+
 /* Basic utility classes */
 .hidden {
   display: none;
@@ -48,4 +52,10 @@ fieldset {
 #output {
   font-family: 'Droid Sans Mono', 'DejaVu Sans Mono', monospace;
   margin: 0.25em;
+}
+
+#clock{
+    border: #ff0000;
+    border-style: solid;
+    white-space:nowrap;
 }
