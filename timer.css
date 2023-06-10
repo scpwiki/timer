@@ -1,35 +1,44 @@
 /* Main elements */
 body {
   font-family: Arial, sans-serif;
+  text-align: center;
+  overflow: hidden;
 }
 
 #title {
   text-align: center;
+  font-size: 1.4em;
+  display: flex;
+  justify-content: center;
 }
 
 #clock {
   text-align: center;
   background-color: #eee;
-  border-radius: 0.25em;
-  padding: 1em;
-  margin: 1em;
+  border-radius: 0.2em;
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .unit {
   display: inline-block;
   margin: 0.5em;
+  display: flex;
+  flex-direction: column;
 }
 
 .unit-value {
   font-family: 'Droid Sans Mono', 'DejaVu Sans Mono', monospace;
-  font-size: 2em;
+  font-size: 1.5em;
   background-color: #ccc;
   border-radius: 0.25em;
-  padding: 0.15em;
+  padding: 0.12em;
 }
 
 .unit-label {
-  font-size: 1em;
+  font-size: 0.85em;
 }
 
 /* Basic utility classes */
