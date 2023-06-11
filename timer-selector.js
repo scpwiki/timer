@@ -283,7 +283,7 @@ function getMessage(language, messageKey) {
       'template-deletion': '由于条目的分数为-X分，现根据[[[deletions-guide|删帖指导]]]，宣告将删除此页：\n\n%%iframe%%\n\n**如果你不是作者又想要重写该条目，请在此帖回复申请。请先取得作者（或管理员，如果此文档搬运自聊天室的话）的同意，并将原文的源代码复制至沙盒里。除非你是工作人员，否则请勿就申请重写以外的范围回复此帖。**',
       'template-ban': '%%iframe%%',
       'message-deletion-progress': '此页面将在计时器到期后可供删除：',
-      'message-deletion-finished': '此页面在下列时间可前已可供删除：',
+      'message-deletion-finished': '此页面在下列时间前已可供删除：',
       'message-ban-progress': '此用户的封禁将到期于：',
       'message-ban-finished': '此用户的封禁已到期：',
       'build-timer': '生成计时器',
