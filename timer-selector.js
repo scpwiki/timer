@@ -488,8 +488,6 @@ function initializeMessages(language) {
     document.getElementById(id).innerText = getMessage(language, messageKey || id);
   }
 
-  var element;
-
   setMessage('timer-type-label', 'timer-type');
   setMessage('timer-type-generic-label', 'timer-type-generic');
   setMessage('timer-type-deletion-label', 'timer-type-deletion');
