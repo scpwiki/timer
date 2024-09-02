@@ -23,6 +23,11 @@ function setError(primary, secondary = null) {
 
 // Localization
 var TRANSLATIONS = {
+  // Test _mostly_ returns the message key but there are a few special cases
+  'test': {
+    'template-deletion': 'score: %%score%%\n\nsummary:%%summary%%\n\niframe: %%iframe%%',
+    'summary-deletion-reason-skeleton': '**(%%reason%%).**',
+  },
   // English
   'en': {
     'timer-description': 'Timer expiring at',
@@ -32,6 +37,19 @@ var TRANSLATIONS = {
     'timer-type-generic': 'Generic',
     'timer-type-deletion': 'Deletion',
     'timer-type-ban': 'Ban',
+    'deletion-options': 'Deletion Options',
+    'deletion-score': 'Article\'s current score',
+    'summary-deletion': 'Reason for summary deletion (optional)',
+    'summary-deletion-reason-none': 'N/A',
+    'summary-deletion-reason-skeleton': '**Also witnessing for summary deletion (%%reason%%).**',
+    'summary-deletion-reason-1': 'use of generative AI',
+    'summary-deletion-reason-2': 'plagiarism',
+    'summary-deletion-reason-3': 'vote manipulation',
+    'summary-deletion-reason-4': 'trolling',
+    'summary-deletion-reason-5': 'out of range',
+    'summary-deletion-reason-6': 'blank/unfinished',
+    'summary-deletion-reason-7': '\'gaming\' site procedure',
+    'summary-deletion-reason-8': 'malicious content/physically harmful',
     'duration': 'Duration',
     'duration-1d': '1 Day',
     'duration-1w': '1 Week',
@@ -55,13 +73,14 @@ var TRANSLATIONS = {
     'width': 'Width',
     'css-extra': 'Custom timer CSS (optional)',
     'template': 'Output template',
-    'template-deletion': 'Beginning deletion confirmation at -10.\n\n%%iframe%%\n\nIf this article is over a year old, you are not the author, and you want to rewrite this article, PM a member of the [[[rewrite-guide|Rewrite Team]]]. Please request permission from the author and make sure you copy the page source to your sandbox. **Do not reply to this post unless you are staff.**',
+    'template-deletion': 'Beginning deletion confirmation at %%score%%.%%summary%%\n\n%%iframe%%\n\nIf this article is over a year old, you are not the author, and you want to rewrite this article, PM a member of the [[[rewrite-guide|Rewrite Team]]]. Please request permission from the author and make sure you copy the page source to your sandbox. **Do not reply to this post unless you are staff.**',
     'template-ban': '%%iframe%%',
     'message-deletion-progress': 'This page will be eligible for deletion in',
     'message-deletion-finished': 'This page has been eligible for deletion since',
     'message-ban-progress': 'This user\'s ban will elapse in',
     'message-ban-finished': 'This user\'s ban has been expired since',
     'build-timer': 'Build timer',
+    'build-and-copy-timer': 'Build timer and copy to clipboard',
     'info-help': 'help',
     'info-source': 'source',
     'error-missing': 'Please make a selection in each section first.',
@@ -100,7 +119,7 @@ var TRANSLATIONS = {
     'width': 'Largeur',
     'css-extra': 'CSS personnalisé pour le compte à rebours (optionnel)',
     'template': "Modèle d'output",
-    'template-deletion': "Début du compte à rebours de suppression à -3.\n\n%%iframe%%\n\nCe message est ouvert aux réponses de l'auteur ou d'un autre membre désirant éventuellement réécrire l'article, avec l'autorisation de l'auteur s'il est encore actif.",
+    'template-deletion': "Début du compte à rebours de suppression à %%score%%.\n\n%%iframe%%\n\nCe message est ouvert aux réponses de l'auteur ou d'un autre membre désirant éventuellement réécrire l'article, avec l'autorisation de l'auteur s'il est encore actif.",
     'template-ban': '%%iframe%%',
     'message-deletion-progress': 'Cette page pourra être supprimée dans',
     'message-deletion-finished': 'Cette page peut être supprimée depuis',
@@ -145,7 +164,7 @@ var TRANSLATIONS = {
     'width': 'Idthway',
     'css-extra': 'Ustomcay imertay CSSYAY (optionalyay)',
     'template': 'Outputyay emplatetay',
-    'template-deletion': 'Eginningbay eletionday otevay atyay -10.\n\n%%iframe%%\n\nIfyay isthay articleyay isyay overyay ayay earyay oldyay, ouyay areyay otnay ethay authoryay, andyay ouyay antway otay ewriteray isthay articleyay, equestray otay oday osay inyay ethay [/forum/t-14018096/rewrite-request-thread#post-4916192 Ewriteray Equestray Eadthray]. Easeplay equestray ermissionpay omfray ehtay authoryay andyay akemay uresay ouyay opycay ehtay agepay ourcesay otay ouryay andboxsay. **Oday otnay eplyray otay isthay ostay unlessyay ouyay areyay affstay.**',
+    'template-deletion': 'Eginningbay eletionday otevay atyay %%score%%.\n\n%%iframe%%\n\nIfyay isthay articleyay isyay overyay ayay earyay oldyay, ouyay areyay otnay ethay authoryay, andyay ouyay antway otay ewriteray isthay articleyay, equestray otay oday osay inyay ethay [/forum/t-14018096/rewrite-request-thread#post-4916192 Ewriteray Equestray Eadthray]. Easeplay equestray ermissionpay omfray ehtay authoryay andyay akemay uresay ouyay opycay ehtay agepay ourcesay otay ouryay andboxsay. **Oday otnay eplyray otay isthay ostay unlessyay ouyay areyay affstay.**',
     'template-ban': '%%iframe%%',
     'message-deletion-progress': 'Isthay agepay illway ebay eligibleyay orfay eletionday inyay',
     'message-deletion-finished': 'Isthay agepay has been eligible for deletion since',
@@ -190,7 +209,7 @@ var TRANSLATIONS = {
     'width': 'Ancho',
     'css-extra': 'CSS personalizado del temporizador (opcional)',
     'template': 'Modelo de salida',
-    'template-deletion': 'Comienzo de la eliminación en -3.\n\n%%iframe%%\n\nSi no eres el autor y desea reescribir este artículo, puede responder a este post solicitando la oportunidad de hacerlo. Obtenga permiso del autor (o de la administración si este artículo tiene más de 6 meses) y asegúrese de copiar el código fuente del artículo en su borrador. **Por favor, __no__ responda a este post por cualquier otra razón a menos que seas parte del Staff.**',
+    'template-deletion': 'Comienzo de la eliminación en %%score%%.\n\n%%iframe%%\n\nSi no eres el autor y desea reescribir este artículo, puede responder a este post solicitando la oportunidad de hacerlo. Obtenga permiso del autor (o de la administración si este artículo tiene más de 6 meses) y asegúrese de copiar el código fuente del artículo en su borrador. **Por favor, __no__ responda a este post por cualquier otra razón a menos que seas parte del Staff.**',
     'template-ban': '%%iframe%%',
     'message-deletion-progress': 'Esta página podrá ser eliminada en',
     'message-deletion-finished': 'Esta página puede ser eliminada desde',
@@ -235,7 +254,7 @@ var TRANSLATIONS = {
     'width': 'Chiều rộng',
     'css-extra': 'CSS tùy chỉnh (không bắt buộc)',
     'template': 'Mẫu code',
-    'template-deletion': '[[=]]\n\n**Bài sẽ bị xóa khi đồng hồ dưới đây đếm ngược về 0:**\n\n%%iframe%%\n\n[[/=]]\n\n**Lý do xóa:** Rating bài dưới -5.\n\n**Nếu bạn không phải là tác giả và muốn viết lại bài viết này, hãy trả lời bình luận này, liên hệ với tác giả và lưu lại mã nguồn. Ngoài ra, làm ơn không trả lời bình luận này trừ khi bạn là nhân viên.**',
+    'template-deletion': '[[=]]\n\n**Bài sẽ bị xóa khi đồng hồ dưới đây đếm ngược về %%score%%:**\n\n%%iframe%%\n\n[[/=]]\n\n**Lý do xóa:** Rating bài dưới -5.\n\n**Nếu bạn không phải là tác giả và muốn viết lại bài viết này, hãy trả lời bình luận này, liên hệ với tác giả và lưu lại mã nguồn. Ngoài ra, làm ơn không trả lời bình luận này trừ khi bạn là nhân viên.**',
     'template-ban': '%%iframe%%',
     'message-deletion-progress': 'Trang này sẽ đủ điều kiện xóa trong',
     'message-deletion-finished': 'Trang này đã đủ điều kiện xóa từ',
@@ -280,7 +299,7 @@ var TRANSLATIONS = {
     'width': '宽度',
     'css-extra': '自定计时器样式（可选）',
     'template': '输出模板',
-    'template-deletion': '由于条目的分数为-X分，现根据[[[deletions-guide|删帖指导]]]，宣告将删除此页：\n\n%%iframe%%\n\n**如果你不是作者又想要重写该条目，请在此帖回复申请。请先取得作者（或管理员，如果此文档搬运自聊天室的话）的同意，并将原文的源代码复制至沙盒里。除非你是工作人员，否则请勿就申请重写以外的范围回复此帖。**',
+    'template-deletion': '由于条目的分数为%%score%%分，现根据[[[deletions-guide|删帖指导]]]，宣告将删除此页：\n\n%%iframe%%\n\n**如果你不是作者又想要重写该条目，请在此帖回复申请。请先取得作者（或管理员，如果此文档搬运自聊天室的话）的同意，并将原文的源代码复制至沙盒里。除非你是工作人员，否则请勿就申请重写以外的范围回复此帖。**',
     'template-ban': '%%iframe%%',
     'message-deletion-progress': '此页面将在计时器到期后可供删除：',
     'message-deletion-finished': '此页面在下列时间前已可供删除：',
@@ -294,13 +313,7 @@ var TRANSLATIONS = {
   },
 };
 
-function getMessage(language, messageKey) {
-  // Special case:
-  // The 'test' language just echoes the message key back out.
-  if (language === 'test') {
-    return messageKey;
-  }
-
+function getMessage(language, messageKey, optionalMessage = false) {
   // Get message based on language
   var messages = TRANSLATIONS[language];
   if (!messages) {
@@ -310,11 +323,32 @@ function getMessage(language, messageKey) {
 
   var message = messages[messageKey];
   if (!message) {
-    setError('No such message key: ' + messageKey);
+    if (language === 'test') {
+      // Special case:
+      // The 'test' language just echoes the message key back out unless overridden.
+      return messageKey;
+    } else if (!optionalMessage) {
+      setError('No such message key: ' + messageKey);
+    }
     return null;
   }
 
   return message;
+}
+
+function getDefaultDeletionScore(language) {
+  switch (String(language)) {
+    case 'cn':
+    case 'vi':
+      return 0;
+    case 'fr':
+    case 'es':
+      return -3;
+    case 'en':
+    case 'pig':
+    default:
+      return -10;
+  }
 }
 
 function insertCSS(styling) {
@@ -351,14 +385,27 @@ function buildUrl(language, startDate, durationMs, progressMessage, finishedMess
   return 'https://scpwiki.github.io/timer/timer.html?' + parameters;
 }
 
-function buildWikitext(template, url, height, width) {
+function buildWikitext(language, template, url, score, height, width) {
+  function getSummaryDeletionText() {
+    var summaryDeletionBox = document.getElementById('summary-deletion-reason');
+    if (summaryDeletionBox.value) {
+      var retVal = " " + getMessage(language, 'summary-deletion-reason-skeleton');
+      var reason = summaryDeletionBox.options[summaryDeletionBox.selectedIndex].text;
+      return retVal.replace('%%reason%%', reason);
+    } else {
+      return "";
+    }
+  }
+
   var iframe = [
     '[[iframe ', url, ' style="width: ', width, '; height: ', height, '; border: 0; text-align: center;"]]',
   ].join('');
 
   return template
     .replace('%%url%%', url)
-    .replace('%%iframe%%', iframe);
+    .replace('%%score%%', score)
+    .replace('%%iframe%%', iframe)
+    .replace('%%summary%%', getSummaryDeletionText());
 }
 
 function findCheckedItem(selector) {
@@ -459,7 +506,7 @@ function getTextData(language) {
   };
 }
 
-function buildTimer(language) {
+function buildTimer(language, copyToClipboard) {
   // Unhide output
   var outputElement = document.getElementById('output');
   outputElement.classList.remove('hidden');
@@ -468,6 +515,7 @@ function buildTimer(language) {
   var startDate = getStartDate(language);
   var durationMs = getDuration(language);
   var data = getTextData(language);
+  var score = document.getElementById('deletion-score-value').value;
 
   // Build wikitext and output
   var url = buildUrl(
@@ -479,54 +527,102 @@ function buildTimer(language) {
     data.styling,
   );
 
-  outputElement.value = buildWikitext(data.template, url, data.height, data.width);
+  outputElement.value = buildWikitext(language, data.template, url, score, data.height, data.width);
+
+  if (copyToClipboard) {
+    navigator.clipboard.writeText(outputElement.value);
+  }
+}
+
+function setMessage(language, id, messageKey = null) {
+  document.getElementById(id).innerText = getMessage(language, messageKey || id);
+}
+
+function initializeSummaryDeletionMessages(language) {
+  // Summary deletion reasons vary by site
+  var summaryDeletionBox = document.getElementById('summary-deletion-reason');
+  for (var i = 1; i < 25; ++i) {
+    var message = getMessage(language, 'summary-deletion-reason-' + i, true);
+    if (message) {
+      var opt = document.createElement('option');
+      opt.value = i;
+      opt.innerHTML = message;
+      summaryDeletionBox.appendChild(opt);
+    }
+  }
+
+  // Only show summary deletion options if supported by the selected language
+  if (summaryDeletionBox.children.length > 1 )
+  {
+    setMessage(language, 'summary-deletion-label', 'summary-deletion');
+    setMessage(language, 'summary-deletion-reason-none');
+  } else {
+    summaryDeletionBox.hidden = true;
+    document.getElementById('summary-deletion-label').hidden = true;
+  }
 }
 
 // Initialization
 function initializeMessages(language) {
-  function setMessage(id, messageKey = null) {
-    document.getElementById(id).innerText = getMessage(language, messageKey || id);
-  }
 
-  setMessage('timer-type-label', 'timer-type');
-  setMessage('timer-type-generic-label', 'timer-type-generic');
-  setMessage('timer-type-deletion-label', 'timer-type-deletion');
-  setMessage('timer-type-ban-label', 'timer-type-ban');
+  setMessage(language, 'timer-type-label', 'timer-type');
+  setMessage(language, 'timer-type-generic-label', 'timer-type-generic');
+  setMessage(language, 'timer-type-deletion-label', 'timer-type-deletion');
+  setMessage(language, 'timer-type-ban-label', 'timer-type-ban');
 
-  setMessage('start-label', 'start-time');
-  setMessage('start-now-label', 'start-time-now');
-  setMessage('start-later-label', 'start-time-later');
+  setMessage(language, 'deletion-options-label', 'deletion-options');
+  setMessage(language, 'deletion-score-label', 'deletion-score');
 
-  setMessage('duration-label', 'duration');
-  setMessage('duration-1d-label', 'duration-1d');
-  setMessage('duration-1w-label', 'duration-1w');
-  setMessage('duration-2w-label', 'duration-2w');
-  setMessage('duration-1y-label', 'duration-1y');
-  setMessage('duration-custom-label', 'duration-custom');
+  setMessage(language, 'start-label', 'start-time');
+  setMessage(language, 'start-now-label', 'start-time-now');
+  setMessage(language, 'start-later-label', 'start-time-later');
 
-  setMessage('unit-minute');
-  setMessage('unit-hour');
-  setMessage('unit-day');
-  setMessage('unit-week');
-  setMessage('unit-month');
-  setMessage('unit-year');
+  setMessage(language, 'duration-label', 'duration');
+  setMessage(language, 'duration-1d-label', 'duration-1d');
+  setMessage(language, 'duration-1w-label', 'duration-1w');
+  setMessage(language, 'duration-2w-label', 'duration-2w');
+  setMessage(language, 'duration-1y-label', 'duration-1y');
+  setMessage(language, 'duration-custom-label', 'duration-custom');
 
-  setMessage('messages-label', 'messages');
+  setMessage(language, 'unit-minute');
+  setMessage(language, 'unit-hour');
+  setMessage(language, 'unit-day');
+  setMessage(language, 'unit-week');
+  setMessage(language, 'unit-month');
+  setMessage(language, 'unit-year');
+
+  setMessage(language, 'messages-label', 'messages');
   document.getElementById('message-progress').placeholder = getMessage(language, 'timer-progress');
   document.getElementById('message-finished').placeholder = getMessage(language, 'timer-finished');
-  setMessage('message-progress-label', 'message-progress');
-  setMessage('message-finished-label', 'message-finished');
+  setMessage(language, 'message-progress-label', 'message-progress');
+  setMessage(language, 'message-finished-label', 'message-finished');
 
-  setMessage('advanced-label', 'advanced-section');
-  setMessage('height-label', 'height');
-  setMessage('width-label', 'width');
-  setMessage('custom-css-label', 'css-extra');
-  setMessage('template-label', 'template');
+  setMessage(language, 'advanced-label', 'advanced-section');
+  setMessage(language, 'height-label', 'height');
+  setMessage(language, 'width-label', 'width');
+  setMessage(language, 'custom-css-label', 'css-extra');
+  setMessage(language, 'template-label', 'template');
   document.getElementById('custom-css').placeholder = '#title {\n  color: #008080;\n}';
 
-  setMessage('build', 'build-timer');
-  setMessage('info-help');
-  setMessage('info-source');
+  setMessage(language, 'build', 'build-timer');
+  setMessage(language, 'copy', 'build-and-copy-timer');
+  setMessage(language, 'info-help');
+  setMessage(language, 'info-source');
+
+  initializeSummaryDeletionMessages(language)
+}
+
+function initializeDeletionScore(language, deletionScore) {
+  // language currently unused
+  var scoreBox = document.getElementById('deletion-score-value');
+  scoreBox.value = deletionScore;
+  scoreBox.onclick = scoreBox.onblur = function() {
+    if (Number(scoreBox.value) > deletionScore) {
+      scoreBox.style.backgroundColor = "yellow";
+    } else {
+      scoreBox.style.backgroundColor = "white";
+    }
+  }
 }
 
 function initializeHooks(language) {
@@ -534,6 +630,8 @@ function initializeHooks(language) {
     document.getElementById('message-progress').value = '';
     document.getElementById('message-finished').value = '';
     document.getElementById('template').value = '%%iframe%%';
+    var deletionOptElement = document.getElementById('deletion-options');
+    deletionOptElement.classList.add('hidden');
   };
 
   document.getElementById('timer-type-deletion').onclick = function () {
@@ -541,12 +639,16 @@ function initializeHooks(language) {
     document.getElementById('message-progress').value = getMessage(language, 'message-deletion-progress');
     document.getElementById('message-finished').value = getMessage(language, 'message-deletion-finished');
     document.getElementById('template').value = getMessage(language, 'template-deletion');
+    var deletionOptElement = document.getElementById('deletion-options');
+    deletionOptElement.classList.remove('hidden');
   };
 
   document.getElementById('timer-type-ban').onclick = function () {
     document.getElementById('message-progress').value = getMessage(language, 'message-ban-progress');
     document.getElementById('message-finished').value = getMessage(language, 'message-ban-finished');
     document.getElementById('template').value = getMessage(language, 'template-ban');
+    var deletionOptElement = document.getElementById('deletion-options');
+    deletionOptElement.classList.add('hidden');
   };
 
   function onClickStartDate() {
@@ -564,7 +666,10 @@ function initializeHooks(language) {
   document.getElementById('duration-custom-unit').onclick = onClickCustom;
 
   document.getElementById('build').onclick = function () {
-    buildTimer(language);
+    buildTimer(language, false);
+  };
+  document.getElementById('copy').onclick = function () {
+    buildTimer(language, true);
   };
 }
 
@@ -574,11 +679,16 @@ function setup() {
   var parameters = new URLSearchParams(url.search);
   var language = parameters.get('lang');
   var styling = parameters.get('style');
+  var deletionScore = parameters.get('delScore');
 
   // Check parameters
   if (!language) {
     setError('No language set', 'Parameter is "lang". Use "en" for English.');
     return;
+  }
+
+  if (!deletionScore) {
+    deletionScore = getDefaultDeletionScore(language);
   }
 
   // Insert custom CSS, if any
@@ -587,6 +697,7 @@ function setup() {
   }
 
   initializeMessages(language);
+  initializeDeletionScore(language, deletionScore);
   initializeHooks(language);
 }
 

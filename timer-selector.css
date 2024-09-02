@@ -23,6 +23,10 @@ fieldset {
   width: 25%;
 }
 
+.text-tiny input {
+  width: 3em;
+}
+
 #build {
   margin: 0.4em;
 }
