@@ -27,6 +27,7 @@ var TRANSLATIONS = {
   'test': {
     'template-deletion': 'score: %%score%%\n\nsummary:%%summary%%\n\niframe: %%iframe%%',
     'summary-deletion-reason-skeleton': '**(%%reason%%).**',
+    'summary-deletion-reasons': ['1', '2', '3'],
   },
   // English
   'en': {
@@ -42,14 +43,14 @@ var TRANSLATIONS = {
     'summary-deletion': 'Reason for summary deletion (optional)',
     'summary-deletion-reason-none': 'N/A',
     'summary-deletion-reason-skeleton': '**Also witnessing for summary deletion (%%reason%%).**',
-    'summary-deletion-reason-1': 'use of generative AI',
-    'summary-deletion-reason-2': 'plagiarism',
-    'summary-deletion-reason-3': 'vote manipulation',
-    'summary-deletion-reason-4': 'trolling',
-    'summary-deletion-reason-5': 'out of range',
-    'summary-deletion-reason-6': 'blank/unfinished',
-    'summary-deletion-reason-7': '\'gaming\' site procedure',
-    'summary-deletion-reason-8': 'malicious content/physically harmful',
+    'summary-deletion-reasons': ['use of generative AI',
+      'plagiarism',
+      'vote manipulation',
+      'trolling',
+      'out of range',
+      'blank/unfinished',
+      '\'gaming\' site procedure',
+      'malicious content/physically harmful',],
     'duration': 'Duration',
     'duration-1d': '1 Day',
     'duration-1w': '1 Week',
@@ -541,14 +542,11 @@ function setMessage(language, id, messageKey = null) {
 function initializeSummaryDeletionMessages(language) {
   // Summary deletion reasons vary by site
   var summaryDeletionBox = document.getElementById('summary-deletion-reason');
-  for (var i = 1; i < 25; ++i) {
-    var message = getMessage(language, 'summary-deletion-reason-' + i, true);
-    if (message) {
-      var opt = document.createElement('option');
-      opt.value = i;
-      opt.innerHTML = message;
-      summaryDeletionBox.appendChild(opt);
-    }
+  var messages = getMessage(language, 'summary-deletion-reasons', true);
+  for (const message of messages) {
+    var opt = document.createElement('option');
+    opt.value = opt.innerHTML = message;
+    summaryDeletionBox.appendChild(opt);
   }
 
   // Only show summary deletion options if supported by the selected language
