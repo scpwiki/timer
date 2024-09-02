@@ -37,6 +37,18 @@
         </span>
       </fieldset>
 
+      <fieldset id="deletion-options" class="hidden">
+        <legend id="deletion-options-label"></legend>
+        <div class="text text-tiny">
+          <label id="deletion-score-label"></label>
+          <input id="deletion-score-value" type="number"></input>
+          <label id="summary-deletion-label"></label>
+          <select id="summary-deletion-reason">
+            <option id="summary-deletion-reason-none" value=""></option>
+          </select>
+        </div>
+      </fieldset>
+
       <fieldset id="start">
         <legend id="start-label"></legend>
 
@@ -115,12 +127,12 @@
       <fieldset id="advanced">
         <legend id="advanced-label"></legend>
 
-        <div class="text message-short">
+        <div class="text text-short">
           <label id="height-label"></label>
           <input id="height" type="text" value="200px"></input>
         </div>
 
-        <div class="text message-short">
+        <div class="text text-short">
           <label id="width-label"></label>
           <input id="width" type="text" value="750px"></input>
         </div>
@@ -138,6 +150,7 @@
 
       <div>
         <button id="build"></button>
+        <button id="copy"></button>
 
         <span class="info">
           [<a id="info-help" href="https://scpwiki.github.io/timer" target="_blank"></a>]
