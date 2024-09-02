@@ -646,12 +646,21 @@ function initializeDeletionScore(language, deletionScore) {
 }
 
 function initializeHooks(language) {
+  function toggleDeletionOptVisibility(show) {
+    var deletionOptElement = document.getElementById('deletion-options');
+    if (show) {
+      deletionOptElement.classList.remove('hidden');
+    } else {
+      deletionOptElement.classList.add('hidden');
+    }
+  }
+
   document.getElementById('timer-type-generic').onclick = function () {
     document.getElementById('message-progress').value = '';
     document.getElementById('message-finished').value = '';
     document.getElementById('template').value = '%%iframe%%';
-    var deletionOptElement = document.getElementById('deletion-options');
-    deletionOptElement.classList.add('hidden');
+
+    toggleDeletionOptVisibility(false);
   };
 
   document.getElementById('timer-type-deletion').onclick = function () {
@@ -659,16 +668,16 @@ function initializeHooks(language) {
     document.getElementById('message-progress').value = getMessage(language, 'message-deletion-progress');
     document.getElementById('message-finished').value = getMessage(language, 'message-deletion-finished');
     document.getElementById('template').value = getMessage(language, 'template-deletion');
-    var deletionOptElement = document.getElementById('deletion-options');
-    deletionOptElement.classList.remove('hidden');
+
+    toggleDeletionOptVisibility(true);
   };
 
   document.getElementById('timer-type-ban').onclick = function () {
     document.getElementById('message-progress').value = getMessage(language, 'message-ban-progress');
     document.getElementById('message-finished').value = getMessage(language, 'message-ban-finished');
     document.getElementById('template').value = getMessage(language, 'template-ban');
-    var deletionOptElement = document.getElementById('deletion-options');
-    deletionOptElement.classList.add('hidden');
+
+    toggleDeletionOptVisibility(false);
   };
 
   function onClickStartDate() {
