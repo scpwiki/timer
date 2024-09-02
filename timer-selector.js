@@ -43,14 +43,16 @@ var TRANSLATIONS = {
     'summary-deletion': 'Reason for summary deletion (optional)',
     'summary-deletion-reason-none': 'N/A',
     'summary-deletion-reason-skeleton': '**Also witnessing for summary deletion (%%reason%%).**',
-    'summary-deletion-reasons': ['use of generative AI',
+    'summary-deletion-reasons': [
+      'use of generative AI',
       'plagiarism',
       'vote manipulation',
       'trolling',
       'out of range',
       'blank/unfinished',
       '\'gaming\' site procedure',
-      'malicious content/physically harmful',],
+      'malicious content/physically harmful',
+    ],
     'duration': 'Duration',
     'duration-1d': '1 Day',
     'duration-1w': '1 Week',
@@ -543,15 +545,15 @@ function initializeSummaryDeletionMessages(language) {
   // Summary deletion reasons vary by site
   var summaryDeletionBox = document.getElementById('summary-deletion-reason');
   var messages = getMessage(language, 'summary-deletion-reasons', true);
-  for (const message of messages) {
+  for (var i = 0; i < messages.length; i++) {
+    var message = messages[i];
     var opt = document.createElement('option');
     opt.value = opt.innerHTML = message;
     summaryDeletionBox.appendChild(opt);
   }
 
   // Only show summary deletion options if supported by the selected language
-  if (summaryDeletionBox.children.length > 1 )
-  {
+  if (summaryDeletionBox.children.length > 1) {
     setMessage(language, 'summary-deletion-label', 'summary-deletion');
     setMessage(language, 'summary-deletion-reason-none');
   } else {
@@ -607,7 +609,7 @@ function initializeMessages(language) {
   setMessage(language, 'info-help');
   setMessage(language, 'info-source');
 
-  initializeSummaryDeletionMessages(language)
+  initializeSummaryDeletionMessages(language);
 }
 
 function initializeDeletionScore(language, deletionScore) {
