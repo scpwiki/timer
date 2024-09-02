@@ -99,6 +99,9 @@ var TRANSLATIONS = {
     'timer-type-generic': 'Générique',
     'timer-type-deletion': 'Suppression',
     'timer-type-ban': 'Bannissement',
+    'deletion-options': 'Deletion Options NEEDS TRANSLATION', // TODO
+    'deletion-score': 'Article\'s current score NEEDS TRANSLATION', // TODO
+    'summary-deletion-reasons': [],
     'duration': 'Durée',
     'duration-1d': '1 jour',
     'duration-1w': '1 semaine',
@@ -129,6 +132,7 @@ var TRANSLATIONS = {
     'message-ban-progress': "Le bannissement de l'utilisateur se terminera dans",
     'message-ban-finished': "Le bannissement de l'utilisateur est terminé depuis",
     'build-timer': 'Définir un compte à rebours',
+    'build-and-copy-timer': 'Build timer and copy to clipboard NEEDS TRNASLATION',
     'info-help': 'aide',
     'info-source': 'source',
     'error-missing': 'Veuillez sélectionner une option dans chaque section avant.',
@@ -144,6 +148,9 @@ var TRANSLATIONS = {
     'timer-type-generic': 'Enericgay',
     'timer-type-deletion': 'Eletionday',
     'timer-type-ban': 'Anbay',
+    'deletion-options': 'Eletionday Optionsyay',
+    'deletion-score': 'article\'syay urrentcay orescay',
+    'summary-deletion-reasons': [],
     'duration': 'Urationday',
     'duration-1d': '1 Aday',
     'duration-1w': '1 Eekway',
@@ -174,6 +181,7 @@ var TRANSLATIONS = {
     'message-ban-progress': 'Isthay user\'syay anbay illway elapseyay inyay',
     'message-ban-finished': 'Isthay user\'syay anbay ashay eenbay expiredyay incesay',
     'build-timer': 'Uildbay imertay',
+    'build-and-copy-timer': 'Uildbay imertay andyay opycay otay ipboardclay',
     'info-help': 'elphay',
     'info-source': 'ourcesay',
     'error-missing': 'Easeplay akemay ayay electionsay inyay eachyay ectionsay irstfay.',
@@ -189,6 +197,9 @@ var TRANSLATIONS = {
     'timer-type-generic': 'Genérico',
     'timer-type-deletion': 'Eliminación',
     'timer-type-ban': 'Ban',
+    'deletion-options': 'Deletion Options NEEDS TRANSLATION', // TODO
+    'deletion-score': 'Article\'s current score NEEDS TRANSLATION', // TODO
+    'summary-deletion-reasons': [],
     'duration': 'Duración',
     'duration-1d': '1 Día',
     'duration-1w': '1 Semana',
@@ -219,6 +230,7 @@ var TRANSLATIONS = {
     'message-ban-progress': 'El ban de este usuario finalizará en',
     'message-ban-finished': 'El ban del usuario ha finalizado desde',
     'build-timer': 'Crear temporizador',
+    'build-and-copy-timer': 'Build timer and copy to clipboard NEEDS TRNASLATION',
     'info-help': 'ayuda',
     'info-source': 'código fuente',
     'error-missing': 'Por favor, haga una selección en cada sección primero.',
@@ -234,6 +246,9 @@ var TRANSLATIONS = {
     'timer-type-generic': 'Chung',
     'timer-type-deletion': 'Xóa Bài',
     'timer-type-ban': 'Chặn Người Dùng',
+    'deletion-options': 'Deletion Options NEEDS TRANSLATION', // TODO
+    'deletion-score': 'Article\'s current score NEEDS TRANSLATION', // TODO
+    'summary-deletion-reasons': [],
     'duration': 'Thời Gian',
     'duration-1d': '1 Ngày',
     'duration-1w': '1 Tuần',
@@ -264,6 +279,7 @@ var TRANSLATIONS = {
     'message-ban-progress': 'Lệnh chặn người dùng này sẽ hết hạn vào',
     'message-ban-finished': 'Lệnh chặn người dùng này đã hết hạn từ',
     'build-timer': 'Tạo đồng hồ',
+    'build-and-copy-timer': 'Build timer and copy to clipboard NEEDS TRNASLATION',
     'info-help': 'trợ giúp',
     'info-source': 'mã nguồn',
     'error-missing': 'Hãy chọn đầy đủ các tùy chọn bắt buộc',
@@ -279,6 +295,9 @@ var TRANSLATIONS = {
     'timer-type-generic': '通用',
     'timer-type-deletion': '删除',
     'timer-type-ban': '封禁',
+    'deletion-options': 'Deletion Options NEEDS TRANSLATION', // TODO
+    'deletion-score': 'Article\'s current score NEEDS TRANSLATION', // TODO
+    'summary-deletion-reasons': [],
     'duration': '运行时间',
     'duration-1d': '1日',
     'duration-1w': '1周',
@@ -309,6 +328,7 @@ var TRANSLATIONS = {
     'message-ban-progress': '此用户的封禁将到期于：',
     'message-ban-finished': '此用户的封禁已到期：',
     'build-timer': '生成计时器',
+    'build-and-copy-timer': 'Build timer and copy to clipboard NEEDS TRNASLATION',
     'info-help': '帮助',
     'info-source': '来源',
     'error-missing': '请先在每个项中做选择。',
