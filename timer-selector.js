@@ -99,8 +99,8 @@ var TRANSLATIONS = {
     'timer-type-generic': 'Générique',
     'timer-type-deletion': 'Suppression',
     'timer-type-ban': 'Bannissement',
-    'deletion-options': 'Deletion Options NEEDS TRANSLATION', // TODO
-    'deletion-score': 'Article\'s current score NEEDS TRANSLATION', // TODO
+    'deletion-options': 'Options de suppression',
+    'deletion-score': 'Note actuelle de l\'article',
     'summary-deletion-reasons': [],
     'duration': 'Durée',
     'duration-1d': '1 jour',
