@@ -632,8 +632,7 @@ function initializeMessages(language) {
   initializeSummaryDeletionMessages(language);
 }
 
-function initializeDeletionScore(language, deletionScore) {
-  // language currently unused
+function initializeDeletionScore(deletionScore) {
   var scoreBox = document.getElementById('deletion-score-value');
   scoreBox.value = deletionScore;
   scoreBox.onclick = scoreBox.onblur = function() {
@@ -726,7 +725,7 @@ function setup() {
   }
 
   initializeMessages(language);
-  initializeDeletionScore(language, deletionScore);
+  initializeDeletionScore(deletionScore);
   initializeHooks(language);
 }
 
