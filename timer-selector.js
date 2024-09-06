@@ -295,8 +295,8 @@ var TRANSLATIONS = {
     'timer-type-generic': '通用',
     'timer-type-deletion': '删除',
     'timer-type-ban': '封禁',
-    'deletion-options': 'Deletion Options NEEDS TRANSLATION', // TODO
-    'deletion-score': 'Article\'s current score NEEDS TRANSLATION', // TODO
+    'deletion-options': '删除选项',
+    'deletion-score': '当前文章的分数为',
     'summary-deletion-reasons': [],
     'duration': '运行时间',
     'duration-1d': '1日',
@@ -328,7 +328,7 @@ var TRANSLATIONS = {
     'message-ban-progress': '此用户的封禁将到期于：',
     'message-ban-finished': '此用户的封禁已到期：',
     'build-timer': '生成计时器',
-    'build-and-copy-timer': 'Build timer and copy to clipboard NEEDS TRNASLATION',
+    'build-and-copy-timer': '生成并复制',
     'info-help': '帮助',
     'info-source': '来源',
     'error-missing': '请先在每个项中做选择。',
@@ -362,6 +362,7 @@ function getMessage(language, messageKey, optionalMessage = false) {
 function getDefaultDeletionScore(language) {
   switch (String(language)) {
     case 'cn':
+      return -2;
     case 'vi':
       return 0;
     case 'fr':
