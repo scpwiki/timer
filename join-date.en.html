@@ -14,17 +14,30 @@
     </style>
 
     <script>
+      function getLocale() {
+        if (navigator.languages && navigator.languages.length) {
+          return navigator.languages[0];
+        }
+
+        if (navigator.language) {
+          return navigator.language;
+        }
+
+        return 'en';
+      }
+
       // Calculate date
       var date = new Date();
       date.setFullYear(date.getFullYear() - 18);
 
       // Add information to span
+      var locale = getLocale();
       var options = {
         year: 'numeric',
         month: 'long',
         day: 'numeric',
       };
-      document.getElementById('date').innerText = Intl.DateTimeFormat('en', options).format(date);
+      document.getElementById('date').innerText = Intl.DateTimeFormat(locale, options).format(date);
 
       // Unhide extra information section
       document.getElementById('extra').classList.remove('hidden');
