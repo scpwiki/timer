@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Language" content="en-US">
+    <title>Join the Site - Age Requirement</title>
+  </head>
+  <body>
+    To join the site, you must be at least <strong>18 years old</strong><span id="extra" class="hidden">, meaning you were born <strong>on or before <span id="date"></span></strong></span>.
+
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+
+    <script>
+      // Calculate date
+      var date = new Date();
+      date.setFullYear(date.getFullYear() - 18);
+
+      // Add information to span
+      var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'October', 'December'];
+      var month = months[date.getMonth()];
+      document.getElementById('date').innerText = month + ' ' + date.getDate() + ', ' + date.getFullYear();
+
+      // Unhide extra information section
+      document.getElementById('extra').classList.remove('hidden');
+    </script>
+  </body>
+</html>
