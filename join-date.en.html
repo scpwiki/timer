@@ -19,9 +19,7 @@
       date.setFullYear(date.getFullYear() - 18);
 
       // Add information to span
-      var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'October', 'December'];
-      var month = months[date.getMonth()];
-      document.getElementById('date').innerText = month + ' ' + date.getDate() + ', ' + date.getFullYear();
+      document.getElementById('date').innerText = Intl.DateTimeFormat().format(date);
 
       // Unhide extra information section
       document.getElementById('extra').classList.remove('hidden');
