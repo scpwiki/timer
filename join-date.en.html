@@ -19,7 +19,12 @@
       date.setFullYear(date.getFullYear() - 18);
 
       // Add information to span
-      document.getElementById('date').innerText = Intl.DateTimeFormat().format(date);
+      var options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      };
+      document.getElementById('date').innerText = Intl.DateTimeFormat('en', options).format(date);
 
       // Unhide extra information section
       document.getElementById('extra').classList.remove('hidden');
