@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.scpwiki.com/theme/en/sigma/css/sigma.min.css">
+    <meta http-equiv="Content-Language" content="en">
+    <title>Join the Site - Age Requirement</title>
+  </head>
+  <body>
+    To join the site, you must be at least <strong>18 years old</strong><span id="extra" class="hidden">, meaning you were born <strong>on or before <span id="date"></span></strong></span>.
+
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+
+    <script>
+      function getLocale() {
+        if (navigator.languages && navigator.languages.length) {
+          return navigator.languages[0];
+        }
+
+        if (navigator.language) {
+          return navigator.language;
+        }
+
+        return 'en';
+      }
+
+      // Calculate date
+      var date = new Date();
+      date.setFullYear(date.getFullYear() - 18);
+
+      // Add information to span
+      var locale = getLocale();
+      var options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      };
+      document.getElementById('date').innerText = Intl.DateTimeFormat(locale, options).format(date);
+
+      // Unhide extra information section
+      document.getElementById('extra').classList.remove('hidden');
+    </script>
+  </body>
+</html>
